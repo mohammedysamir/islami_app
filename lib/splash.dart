@@ -52,7 +52,7 @@ class _SplashState extends State<Splash> {
         body: Stack(
       children: [
         Container(
-          child: Image.asset("assets/images/bg2.png"),
+          child: Image.asset("assets/images/bg2.png",fit:BoxFit.fill),
           width: MediaQuery.of(context).size.width,
         ),
         Center(
@@ -72,7 +72,7 @@ class _SplashState extends State<Splash> {
                           Text(
                             "supervised by Mohamed Nabil",
                             style: TextStyle(
-                              color: Color.fromARGB(200, 183, 147, 95),
+                              color: Color.fromARGB(255, 183, 147, 95),
                               fontSize: 18,
                             ),
                           )
@@ -80,7 +80,7 @@ class _SplashState extends State<Splash> {
                   )
                 ]),
           ),
-        )
+        ),
       ],
     ));
   }
