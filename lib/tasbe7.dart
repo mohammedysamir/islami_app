@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:islami/quran/quran_screen.dart';
 import 'background.dart';
 
 class Tasbe7 extends StatefulWidget {
   static String routeName = 'tasbe7';
+
   @override
   _Tasbe7State createState() => _Tasbe7State();
 }
@@ -13,14 +15,14 @@ class _Tasbe7State extends State<Tasbe7> with TickerProviderStateMixin {
   double end = 1.0;
   int numberoftasbe7 = 0;
   int numberoftasbe7tobeshown = 0;
-  String du3a2 = '';
+  String du3a2 = 'سبحان الله';
 
   @override
   void initState() {
-    // initialzie our animation controller
+    // initialize our animation controller
     _controller = AnimationController(
       duration: const Duration(milliseconds: 100),
-      vsync: this, // when it should genrate value
+      vsync: this, // when it should generate value
     );
     super.initState();
   }
@@ -37,23 +39,16 @@ class _Tasbe7State extends State<Tasbe7> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
       background(),
-      // ignore: prefer_const_constructors
       Scaffold(
         backgroundColor: Colors.transparent,
         body: SafeArea(
           child: Column(
-            // ignore: prefer_const_literals_to_create_immutables
             children: [
-              // ignore: prefer_const_constructors
-              // ignore: avoid_unnecessary_containers
               Container(
                 height: 60.0,
-                // ignore: prefer_const_constructors
                 child: Center(
-                  // ignore: prefer_const_constructors
                   child: Text(
                     'اسلامي',
-                    // ignore: prefer_const_constructors
                     style: TextStyle(
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold,
@@ -63,14 +58,12 @@ class _Tasbe7State extends State<Tasbe7> with TickerProviderStateMixin {
                 ),
               ),
               SizedBox(height: 10),
-              // ignore: prefer_const_constructors
               Image(
                 image: AssetImage('assets/images/head of seb7a.png'),
                 height: 40.0,
                 width: 40.0,
                 fit: BoxFit.fitWidth,
               ),
-
               RotationTransition(
                 turns: Tween(begin: start, end: end).animate(_controller)
                   ..addStatusListener((status) {
@@ -84,34 +77,31 @@ class _Tasbe7State extends State<Tasbe7> with TickerProviderStateMixin {
                   fit: BoxFit.cover,
                 ),
               ),
-              // ignore: prefer_const_constructors
-              // ignore: prefer_const_constructors
               SizedBox(height: 40),
-              // ignore: prefer_const_constructors
               Text(
                 'عدد التسبيحات',
                 // ignore: prefer_const_constructors
                 style: textstyle,
               ),
               SizedBox(height: 20.0),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () {
                   increment();
                   _controller.forward();
                 },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                  side: BorderSide(
-                    color: Colors.white70,
-                  ),
-                ),
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.grey),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.white70)))),
                 child: Text(
                   numberoftasbe7tobeshown.toString(),
                   style: textstyle,
                 ),
               ),
               SizedBox(height: 20),
-              // ignore: deprecated_member_use
               ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
                 child: Container(
@@ -119,6 +109,7 @@ class _Tasbe7State extends State<Tasbe7> with TickerProviderStateMixin {
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Text(
                     du3a2,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
@@ -126,9 +117,46 @@ class _Tasbe7State extends State<Tasbe7> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
-              )
-
-              // ignore: prefer_const_constructors
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 160, 0, 0),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 108,
+                  child: BottomNavigationBar(
+                    backgroundColor: Color.fromARGB(255, 183, 147, 95),
+                    selectedIconTheme:
+                        IconThemeData(color: Colors.black, size: 20),
+                    unselectedIconTheme:
+                        IconThemeData(color: Colors.white, size: 20),
+                    type: BottomNavigationBarType.fixed,
+                    selectedItemColor: Colors.black,
+                    selectedFontSize: 12,
+                    unselectedItemColor: Colors.white,
+                    showSelectedLabels: true,
+                    showUnselectedLabels: false,
+                    unselectedFontSize: 12,
+                    currentIndex: 1,
+                    onTap: onItemTapped,
+                    elevation: 15,
+                    items: [
+                      BottomNavigationBarItem(
+                          icon: Image.asset("assets/images/radio.png"),
+                          label: "راديو"),
+                      BottomNavigationBarItem(
+                          icon: Image.asset("assets/images/sebha.png"),
+                          label: "التسبيح"),
+                      BottomNavigationBarItem(
+                          icon: Image.asset(
+                              "assets/images/quran-quran-svgrepo-com.png"),
+                          label: "الاحاديث"),
+                      BottomNavigationBarItem(
+                          icon: Image.asset("assets/images/quran.png"),
+                          label: "القرآن"),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -168,6 +196,20 @@ class _Tasbe7State extends State<Tasbe7> with TickerProviderStateMixin {
         numberoftasbe7tobeshown = 0;
         numberoftasbe7 = 0;
         du3a2 = 'سبحان الله';
+      }
+    });
+  }
+
+  void onItemTapped(int index) {
+    setState(() {
+      Navigator.pop(context);
+      if (index == 0) {}
+      if (index == 1) {
+        Navigator.pushNamed(context, Tasbe7.routeName);
+      }
+      if (index == 2) {}
+      if (index == 3) {
+        Navigator.pushNamed(context, QuranScreen.routeName);
       }
     });
   }
