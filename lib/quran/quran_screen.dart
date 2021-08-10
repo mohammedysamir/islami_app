@@ -4,6 +4,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:islami/quran/sura_list.dart';
 
 class QuranScreen extends StatelessWidget {
   const QuranScreen({Key? key}) : super(key: key);
@@ -23,14 +24,20 @@ class QuranScreen extends StatelessWidget {
           backgroundColor: Colors.transparent,
           centerTitle: true,
           elevation: 0,
-          leading: IconButton(
-              icon: Icon(
-                Icons.arrow_back,
-                color: Colors.black,
-              ),
-              onPressed: () {})
         ),
-        body: Container(child: Text("hello")),
+        body: Column(
+          children: [
+            Expanded(
+              child: Container(
+                alignment: Alignment.center,
+                child: Image(image: AssetImage("assets/images/sura_list_icon.png")),
+              )
+            ),
+            Expanded(
+              child: SuraList(),
+            )
+          ],
+        ),
       ),
     );
   }

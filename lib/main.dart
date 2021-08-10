@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
       title: "إسلامي",
 
       routes: {
-        QuranScreen.routeName: (BuildContext context) => QuranScreen(),
+        QuranScreen.routeName: (context) => const QuranScreen(),
+        "/sura_content": (context) => const Text("Sura Content"),
       },
 
       initialRoute: QuranScreen.routeName,
