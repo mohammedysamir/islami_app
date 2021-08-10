@@ -1,37 +1,19 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:islami/quran/quran_screen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(SplashWidget());
 
-// class MyApp extends StatelessWidget {
-//   String routeName="Splash";
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//         title: "Splash screen",
-//         home: Scaffold(
-//          body:Stack(
-//            children: [
-//              Container(child: Image.asset("assets/images/bg2.png")),
-//              Center(
-//                child: Column(
-//                  mainAxisAlignment: MainAxisAlignment.center,
-//                  children: [
-//                    Image.asset("assets/images/logo2.png"),
-//                    Image.asset("assets/images/route gold.png")
-//                  ]
-//                ),
-//              )
-//            ],
-//          )
-//         ),
-//     );
-//   }
-// }
-
-class MyApp extends StatelessWidget {
+class SplashWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: 'Splash',
+      routes: {
+        'Splash': (context) => const Splash(),
+        '/quran': (context) => const QuranScreen()
+      },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -42,17 +24,31 @@ class MyApp extends StatelessWidget {
 }
 
 class Splash extends StatefulWidget {
+  static const routeName = 'Splash';
+
+  const Splash({Key? key}) : super(key: key);
+
   @override
   _SplashState createState() => _SplashState();
 }
 
 class _SplashState extends State<Splash> {
+  route() {
+    Navigator.pushNamed(context, "/quran");
+  }
+
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 4),
+        () => Navigator.pushReplacement(context, route()));
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(
       children: [
         Container(
-          child: Image.asset("assets/images/bg2.png",fit:BoxFit.fill),
+          child: Image.asset("assets/images/bg2.png", fit: BoxFit.fill),
           width: MediaQuery.of(context).size.width,
         ),
         Center(
