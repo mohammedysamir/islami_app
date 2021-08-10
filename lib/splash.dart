@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:islami/quran/quran_screen.dart';
+import 'package:islami/tasbe7.dart';
 
 void main() => runApp(SplashWidget());
 
@@ -15,7 +16,8 @@ class SplashWidget extends StatelessWidget {
       initialRoute: 'Splash',
       routes: {
         'Splash': (context) => const Splash(),
-        '/quran': (context) => const QuranScreen()
+        'quran_list': (context) => QuranScreen(),
+        'tasbe7':(context) =>Tasbe7(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -36,7 +38,7 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   route() {
-    Navigator.pushNamed(context, "/quran");
+    Navigator.pushNamed(context, QuranScreen.routeName);
   }
 
   void initState() {
