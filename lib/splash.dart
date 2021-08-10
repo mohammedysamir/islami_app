@@ -6,10 +6,13 @@ import 'package:islami/quran/quran_screen.dart';
 void main() => runApp(SplashWidget());
 
 class SplashWidget extends StatelessWidget {
+
+  const SplashWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: 'Splash',
+    initialRoute: 'Splash',
       routes: {
         'Splash': (context) => const Splash(),
         '/quran': (context) => const QuranScreen()
@@ -24,9 +27,8 @@ class SplashWidget extends StatelessWidget {
 }
 
 class Splash extends StatefulWidget {
-  static const routeName = 'Splash';
-
   const Splash({Key? key}) : super(key: key);
+  static const routeName = 'Splash';
 
   @override
   _SplashState createState() => _SplashState();
