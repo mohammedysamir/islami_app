@@ -1,20 +1,16 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:islami/quran/quran_screen.dart';
+import 'HomePage.dart';
+import 'background.dart';
+import 'dart:math' as math;
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
+void main()=>(runApp(myApp()));
+class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "إسلامي",
-
-      routes: {
-        QuranScreen.routeName: (context) => const QuranScreen(),
-        "/sura_content": (context) => const Text("Sura Content"),
-      },
-
-      initialRoute: QuranScreen.routeName,
+      debugShowCheckedModeBanner: false,
+      title: 'Tasbeh page',
+      home: myHomepage(),
     );
-  }
-}
+  }}
