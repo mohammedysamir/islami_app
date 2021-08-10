@@ -7,34 +7,34 @@ class SuraContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'SuraContent',
-        home: Scaffold(
-            appBar: AppBar(title: Text("إسلامي")),
-            body: Center(
-              child: Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.all(20.0),
-                    child: Row(children: [
-                      Image.asset('assets/images/Back.png'),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 100.0),
-                        child: Image.asset('assets/images/islami.png'),
-                      )
-                    ]),
-                  ),
-                  Container(
-                      child: Padding(
-                        padding: EdgeInsets.all(50.0),
-                        child: Row(
-                          children: [
-                            Text("Hello"),
-                            Expanded(child: Image.asset('assets/images/Icon_awesome-play-circle.png')),
-                          ],
-                        ),
-                      )
+        home: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(image: AssetImage("assets/images/bg3.png"), fit: BoxFit.fill),
+          ),
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            appBar: AppBar(
+              leading: BackButton(color: Colors.black,onPressed:(){
+                Navigator.pop(context);
+              }),
+              title: const Text("إسلامي", style: TextStyle(color: Colors.black)),
+              backgroundColor: Colors.transparent,
+              centerTitle: true,
+              elevation: 0,
+            ),
+            body: Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    color: Color(0xFFBB1616),
+
                   )
-                ],
-              ),
-            )));
+                  // child: SuraList(),
+                )
+              ],
+            ),
+          ),
+        )
+    );
   }
 }
