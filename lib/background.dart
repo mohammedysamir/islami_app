@@ -9,8 +9,7 @@ return Container(
           // ignore: prefer_const_constructors
           image: DecorationImage(
             // ignore: prefer_const_constructors
-            image: AssetImage('assets/bg3.png'),
-           
+            image: AssetImage('assets/images/bg3.png'),
           )
         ),
 );
