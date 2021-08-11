@@ -35,39 +35,43 @@ class QuranScreenState extends State<QuranScreen> {
                   Image(image: AssetImage("assets/images/sura_list_icon.png")),
             )),
             SuraList(),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: 108,
-              child: BottomNavigationBar(
-                backgroundColor: Color.fromARGB(255, 183, 147, 95),
-                selectedIconTheme: IconThemeData(color: Colors.black, size: 20),
-                unselectedIconTheme:
-                    IconThemeData(color: Colors.white, size: 20),
-                type: BottomNavigationBarType.fixed,
-                selectedItemColor: Colors.black,
-                selectedFontSize: 12,
-                unselectedItemColor: Colors.white,
-                showSelectedLabels: true,
-                showUnselectedLabels: false,
-                unselectedFontSize: 12,
-                currentIndex: 3,
-                onTap: onItemTapped,
-                elevation: 15,
-                items: [
-                  BottomNavigationBarItem(
-                      icon: Image.asset("assets/images/radio.png"),
-                      label: "راديو"),
-                  BottomNavigationBarItem(
-                      icon: Image.asset("assets/images/sebha.png"),
-                      label: "التسبيح"),
-                  BottomNavigationBarItem(
-                      icon: Image.asset(
-                          "assets/images/quran-quran-svgrepo-com.png"),
-                      label: "الاحاديث"),
-                  BottomNavigationBarItem(
-                      icon: Image.asset("assets/images/quran.png"),
-                      label: "القرآن"),
-                ],
+            Expanded(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                // height: 108,
+                child: BottomNavigationBar(
+                  backgroundColor: Color.fromARGB(255, 183, 147, 95),
+                  selectedIconTheme: IconThemeData(color: Colors.black,
+                      size: 20,
+                  ),
+                  unselectedIconTheme:
+                      IconThemeData(color: Colors.white, size: 20),
+                  type: BottomNavigationBarType.fixed,
+                  selectedItemColor: Colors.black,
+                  selectedFontSize: 12,
+                  unselectedItemColor: Colors.white,
+                  showSelectedLabels: true,
+                  showUnselectedLabels: false,
+                  unselectedFontSize: 12,
+                  currentIndex: 3,
+                  onTap: onItemTapped,
+                  elevation: 15,
+                  items: [
+                    BottomNavigationBarItem(
+                        icon: Image.asset("assets/images/radio.png"),
+                        label: "راديو"),
+                    BottomNavigationBarItem(
+                        icon: Image.asset("assets/images/sebha.png"),
+                        label: "التسبيح"),
+                    BottomNavigationBarItem(
+                        icon: Image.asset(
+                            "assets/images/quran-quran-svgrepo-com.png"),
+                        label: "الاحاديث"),
+                    BottomNavigationBarItem(
+                        icon: Image.asset("assets/images/quran.png"),
+                        label: "القرآن"),
+                  ],
+                ),
               ),
             ),
           ],

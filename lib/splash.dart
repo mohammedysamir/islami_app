@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:islami/quran/quran_screen.dart';
+import 'package:islami/sura_content.dart';
 import 'package:islami/tasbe7.dart';
 
 void main() => runApp(SplashWidget());
@@ -14,11 +15,18 @@ class SplashWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: 'Splash',
-      routes: {
-        'Splash': (context) => const Splash(),
-        'quran_list': (context) => QuranScreen(),
-        'tasbe7':(context) =>Tasbe7(),
+      onGenerateRoute: (RouteSettings settings) {
+        var routes = <String, WidgetBuilder>{
+          Splash.routeName: (context) => Splash(),
+          QuranScreen.routeName: (context) => QuranScreen(),
+          Tasbe7.routeName:(context) =>Tasbe7(),
+          SuraContent.routeName: (context) => SuraContent(args: settings.arguments),
+        };
+        WidgetBuilder? builder = routes[settings.name];
+        if (builder == null) return null;
+        return MaterialPageRoute(builder: (context) => builder(context), settings: settings);
       },
+
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
