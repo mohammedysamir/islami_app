@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:islami/SuraContentArguments.dart';
 
 
 class SuraContent extends StatelessWidget {
+  const SuraContent({Key? key}) : super(key: key);
+
   static const String routeName = "/sura_content";
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as SuraContentArguments;
     return MaterialApp(
         title: 'SuraContent',
         home: Container(

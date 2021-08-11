@@ -1,6 +1,6 @@
 class SuraContentArguments{
-  final int suraNumber;
-  final String suraName;
+   int suraNumber=0;
+   String suraName="";
 
   SuraContentArguments(this.suraNumber, this.suraName);
 

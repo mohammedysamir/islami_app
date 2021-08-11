@@ -70,14 +70,14 @@ class _SuraListState extends State<SuraList> {
                 right: SuraList.borderSide,
               )
           ),
-          text: suraSize[index],
+          text: suraSize[index], suraName: 'Feras',
         )
       );
 
       suraList.add(
         SuraLink(
           suraNumber: index + 1,
-          text: sura,
+          text: sura, suraName: 'Feras',
         )
       );
     });
