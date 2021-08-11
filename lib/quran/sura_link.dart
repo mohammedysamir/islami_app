@@ -3,8 +3,8 @@
 
 
 import 'package:flutter/cupertino.dart';
-import 'package:islami/SuraContentArguments.dart';
-import 'package:islami/SuraContentWidget.dart';
+import 'package:islami/sura_content_arguments.dart';
+import 'package:islami/sura_content.dart';
 
 class SuraLink extends StatelessWidget {
   const SuraLink ({Key? key, required this.suraNumber, required this.text, this.decoration, this.suraName}) : super(key: key);
@@ -22,7 +22,8 @@ class SuraLink extends StatelessWidget {
           SuraContent.routeName,
           arguments: SuraContentArguments(
               suraNumber,
-              suraName),
+              suraName
+          ),
         );
         // TODO: navigate to sura screen
         // from https://flutter.dev/docs/cookbook/navigation/navigate-with-arguments

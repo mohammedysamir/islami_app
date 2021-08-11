@@ -33,9 +33,7 @@ class QuranScreen extends StatelessWidget {
                 child: Image(image: AssetImage("assets/images/sura_list_icon.png")),
               )
             ),
-            Expanded(
-              child: SuraList(),
-            )
+            SuraList()
           ],
         ),
       ),
