@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/quran/sura_link.dart';
+import 'package:islami/utility/get_file_data.dart';
 
 class SuraList extends StatefulWidget {
   const SuraList({Key? key}) : super(key: key);
@@ -24,9 +25,7 @@ class _SuraListState extends State<SuraList> {
   late Future<List<Widget>> futureSuraList;
 
   Future<List<Widget>> buildSuraList() async {
-    Future<String> getFileData(String path) async {
-      return await rootBundle.loadString(path);
-    }
+
 
     final List<Widget> suraList = [
       Container(
@@ -70,14 +69,14 @@ class _SuraListState extends State<SuraList> {
                 right: SuraList.borderSide,
               )
           ),
-          text: suraSize[index],
+          text: suraSize[index], suraName: sura,
         )
       );
 
       suraList.add(
         SuraLink(
           suraNumber: index + 1,
-          text: sura,
+          text: sura, suraName: sura,
         )
       );
     });
@@ -93,15 +92,17 @@ class _SuraListState extends State<SuraList> {
 
   @override
   Widget build(BuildContext context) {
-    buildSuraList();
     return FutureBuilder<List<Widget>>(
       future: futureSuraList,
       builder: (context, snapshot) {
         if (snapshot.hasData){
-          return GridView.count(
-            crossAxisCount: 2,
-            childAspectRatio: 4/1,
-            children: snapshot.data!.toList(),
+          return Expanded(
+            flex: 3,
+            child: GridView.count(
+              crossAxisCount: 2,
+              childAspectRatio: 4/1,
+              children: snapshot.data!.toList(),
+            ),
           );
         }
         else if (snapshot.hasError){
