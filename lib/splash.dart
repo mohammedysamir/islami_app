@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:islami/quran/quran_screen.dart';
+import 'package:islami/radio.dart';
 import 'package:islami/sura_content.dart';
 import 'package:islami/tasbe7.dart';
 
@@ -21,6 +22,7 @@ class SplashWidget extends StatelessWidget {
           QuranScreen.routeName: (context) => QuranScreen(),
           Tasbe7.routeName:(context) =>Tasbe7(),
           SuraContent.routeName: (context) => SuraContent(args: settings.arguments),
+          radio.routeName:(context) => radio(),
         };
         WidgetBuilder? builder = routes[settings.name];
         if (builder == null) return null;
