@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami/Hadeth/HadethScreen.dart';
 import 'package:islami/quran/quran_screen.dart';
 import 'package:islami/radio.dart';
 import 'package:islami/tasbe7.dart';
@@ -75,7 +76,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         Navigator.pushNamed(context, Tasbe7.routeName);
       }
       if (index == 2) {
-        //add hadeth page navigator
+        Navigator.pushNamed(context,HadethScreen.routeName);
       }
       if (index == 3) {
         Navigator.pushNamed(context, QuranScreen.routeName);
