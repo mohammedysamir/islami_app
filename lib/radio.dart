@@ -21,43 +21,45 @@ class RadioScreen extends StatelessWidget {
           centerTitle: true,
           elevation: 0,
         ),
-        body: Stack(
+        body: Column(
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset('assets/images/radio_image.png', fit: BoxFit.fill),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 50, 0, 50),
-                  child: Text(
-                    'اذاعة القرآن الكريم',
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.fromLTRB(0, 70,0, 0),
+              height: MediaQuery.of(context).size.height * 0.777,
+              child: Column(
+                children: [
+                  Image.asset('assets/images/radio_image.png',
+                      fit: BoxFit.fill),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 50, 0, 50),
+                    child: Text(
+                      'اذاعة القرآن الكريم',
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Image.asset(
-                      'assets/images/Icon_previous.png',
-                      fit: BoxFit.cover,
-                    ),
-                    Image.asset(
-                      'assets/images/Icon_play.png',
-                      fit: BoxFit.cover,
-                    ),
-                    Image.asset('assets/images/Icon_next.png',
-                        fit: BoxFit.cover),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 229, 0, 0),
-                  child: BottomNavBar(0),
-                ),
-              ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Image.asset(
+                        'assets/images/Icon_previous.png',
+                        fit: BoxFit.cover,
+                      ),
+                      Image.asset(
+                        'assets/images/Icon_play.png',
+                        fit: BoxFit.cover,
+                      ),
+                      Image.asset('assets/images/Icon_next.png',
+                          fit: BoxFit.cover),
+                    ],
+                  ),
+                ],
+              ),
             ),
+            BottomNavBar(0),
           ],
         ),
       ),
