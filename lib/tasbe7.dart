@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:islami/quran/quran_screen.dart';
 import 'background.dart';
+import 'package:islami/BottomNavBar.dart';
 
 class Tasbe7 extends StatefulWidget {
   static String routeName = 'tasbe7';
@@ -119,43 +119,8 @@ class _Tasbe7State extends State<Tasbe7> with TickerProviderStateMixin {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 160, 0, 0),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 108,
-                  child: BottomNavigationBar(
-                    backgroundColor: Color.fromARGB(255, 183, 147, 95),
-                    selectedIconTheme:
-                        IconThemeData(color: Colors.black, size: 20),
-                    unselectedIconTheme:
-                        IconThemeData(color: Colors.white, size: 20),
-                    type: BottomNavigationBarType.fixed,
-                    selectedItemColor: Colors.black,
-                    selectedFontSize: 12,
-                    unselectedItemColor: Colors.white,
-                    showSelectedLabels: true,
-                    showUnselectedLabels: false,
-                    unselectedFontSize: 12,
-                    currentIndex: 1,
-                    onTap: onItemTapped,
-                    elevation: 15,
-                    items: [
-                      BottomNavigationBarItem(
-                          icon: Image.asset("assets/images/radio.png"),
-                          label: "راديو"),
-                      BottomNavigationBarItem(
-                          icon: Image.asset("assets/images/sebha.png"),
-                          label: "التسبيح"),
-                      BottomNavigationBarItem(
-                          icon: Image.asset(
-                              "assets/images/quran-quran-svgrepo-com.png"),
-                          label: "الاحاديث"),
-                      BottomNavigationBarItem(
-                          icon: Image.asset("assets/images/quran.png"),
-                          label: "القرآن"),
-                    ],
-                  ),
-                ),
+                padding: const EdgeInsets.fromLTRB(0, 174, 0, 0),
+                child: BottomNavBar(1),
               ),
             ],
           ),
@@ -196,20 +161,6 @@ class _Tasbe7State extends State<Tasbe7> with TickerProviderStateMixin {
         numberoftasbe7tobeshown = 0;
         numberoftasbe7 = 0;
         du3a2 = 'سبحان الله';
-      }
-    });
-  }
-
-  void onItemTapped(int index) {
-    setState(() {
-      Navigator.pop(context);
-      if (index == 0) {}
-      if (index == 1) {
-        Navigator.pushNamed(context, Tasbe7.routeName);
-      }
-      if (index == 2) {}
-      if (index == 3) {
-        Navigator.pushNamed(context, QuranScreen.routeName);
       }
     });
   }

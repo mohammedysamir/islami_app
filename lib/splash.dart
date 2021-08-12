@@ -22,7 +22,7 @@ class SplashWidget extends StatelessWidget {
           QuranScreen.routeName: (context) => QuranScreen(),
           Tasbe7.routeName:(context) =>Tasbe7(),
           SuraContent.routeName: (context) => SuraContent(args: settings.arguments),
-          radio.routeName:(context) => radio(),
+          RadioScreen.routeName:(context) => RadioScreen(),
         };
         WidgetBuilder? builder = routes[settings.name];
         if (builder == null) return null;
