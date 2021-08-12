@@ -21,14 +21,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height*0.12 ,
+      height: MediaQuery.of(context).size.height * 0.12,
       child: BottomNavigationBar(
         backgroundColor: Color.fromARGB(255, 183, 147, 95),
-        selectedIconTheme: IconThemeData(
-          color: Colors.black,
-          size: 20,
-        ),
-        unselectedIconTheme: IconThemeData(color: Colors.white, size: 20),
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.black,
         selectedFontSize: 12,
@@ -38,17 +33,33 @@ class _BottomNavBarState extends State<BottomNavBar> {
         unselectedFontSize: 12,
         currentIndex: currentIndex,
         onTap: onItemTapped,
+        iconSize: 40,
         elevation: 15,
         items: [
           BottomNavigationBarItem(
-              icon: Image.asset("assets/images/radio.png"), label: "راديو"),
+              icon: ImageIcon(
+                AssetImage("assets/images/radio.png"),
+                color: currentIndex == 0 ? Colors.black : Colors.white,
+              ),
+              label: "راديو"),
           BottomNavigationBarItem(
-              icon: Image.asset("assets/images/sebha.png"), label: "التسبيح"),
+              icon: ImageIcon(
+                AssetImage("assets/images/sebha.png"),
+                color: currentIndex == 1 ? Colors.black : Colors.white,
+              ),
+              label: "التسبيح"),
           BottomNavigationBarItem(
-              icon: Image.asset("assets/images/quran-quran-svgrepo-com.png"),
+              icon: ImageIcon(
+                AssetImage("assets/images/quran-quran-svgrepo-com.png"),
+                color: currentIndex == 2 ? Colors.black : Colors.white,
+              ),
               label: "الاحاديث"),
           BottomNavigationBarItem(
-              icon: Image.asset("assets/images/quran.png"), label: "القرآن"),
+              icon: ImageIcon(
+                AssetImage("assets/images/quran.png"),
+                color: currentIndex == 3 ? Colors.black : Colors.white,
+              ),
+              label: "القرآن"),
         ],
       ),
     );
