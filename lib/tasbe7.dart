@@ -45,81 +45,87 @@ class _Tasbe7State extends State<Tasbe7> with TickerProviderStateMixin {
           child: Column(
             children: [
               Container(
-                height: 60.0,
-                child: Center(
-                  child: Text(
-                    'اسلامي',
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                height: MediaQuery.of(context).size.height * 0.849,
+                child: Column(
+                  children: [
+                    Center(
+                      child: Text(
+                        'اسلامي',
+                        style: TextStyle(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Image(
-                image: AssetImage('assets/images/head of seb7a.png'),
-                height: 40.0,
-                width: 40.0,
-                fit: BoxFit.fitWidth,
-              ),
-              RotationTransition(
-                turns: Tween(begin: start, end: end).animate(_controller)
-                  ..addStatusListener((status) {
-                    if (status == AnimationStatus.completed)
-                      _controller.reverse();
-                  }),
-                child: Image(
-                  image: AssetImage('assets/images/body of seb7a.png'),
-                  height: 150.0,
-                  width: 150.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              SizedBox(height: 40),
-              Text(
-                'عدد التسبيحات',
-                // ignore: prefer_const_constructors
-                style: textstyle,
-              ),
-              SizedBox(height: 20.0),
-              ElevatedButton(
-                onPressed: () {
-                  increment();
-                  _controller.forward();
-                },
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.grey),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.white70)))),
-                child: Text(
-                  numberoftasbe7tobeshown.toString(),
-                  style: textstyle,
-                ),
-              ),
-              SizedBox(height: 20),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
-                child: Container(
-                  color: Colors.brown[300],
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: Text(
-                    du3a2,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                    SizedBox(height: 10),
+                    Image(
+                      image: AssetImage('assets/images/head of seb7a.png'),
+                      height: 40.0,
+                      width: 40.0,
+                      fit: BoxFit.fitWidth,
                     ),
-                  ),
+                    RotationTransition(
+                      turns: Tween(begin: start, end: end).animate(_controller)
+                        ..addStatusListener((status) {
+                          if (status == AnimationStatus.completed)
+                            _controller.reverse();
+                        }),
+                      child: Image(
+                        image: AssetImage('assets/images/body of seb7a.png'),
+                        height: 150.0,
+                        width: 150.0,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(height: 40),
+                    Text(
+                      'عدد التسبيحات',
+                      // ignore: prefer_const_constructors
+                      style: textstyle,
+                    ),
+                    SizedBox(height: 20.0),
+                    ElevatedButton(
+                      onPressed: () {
+                        increment();
+                        _controller.forward();
+                      },
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.grey),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                      side:
+                                          BorderSide(color: Colors.white70)))),
+                      child: Text(
+                        numberoftasbe7tobeshown.toString(),
+                        style: textstyle,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: Container(
+                        color: Colors.brown[300],
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        child: Text(
+                          du3a2,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 174, 0, 0),
+              Container(
                 child: BottomNavBar(1),
               ),
             ],
