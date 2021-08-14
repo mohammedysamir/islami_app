@@ -36,7 +36,7 @@ class HadethLink extends StatelessWidget {
         child: Container(
           alignment: Alignment.center,
           decoration: decoration,
-          child: Text(hadethName),
+          child: Text(hadethName,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
         ));
   }
 }
