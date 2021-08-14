@@ -49,6 +49,7 @@ flutter:
     - assets/sura_names.txt
     - assets/sura_size.txt
     - assets/ahadeth.txt
+    - assets/ahadeth_names.txt
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
