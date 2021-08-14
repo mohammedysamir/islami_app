@@ -86,7 +86,7 @@ class _SuraContentState extends State<SuraContent> {
                                 alignment: Alignment.center,
                                 child: Text("سورة ${widget.args.suraName}")
                               ),
-                              Image.asset("assets/images/Icon awesome-play.png")
+                              Image.asset("assets/images/Icon_play.png")
                             ],
                           ),
                         ),
