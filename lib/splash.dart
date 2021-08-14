@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:islami/Hadeth/HadethContent.dart';
 import 'package:islami/Hadeth/HadethScreen.dart';
 import 'package:islami/quran/quran_screen.dart';
 import 'package:islami/radio.dart';
@@ -24,7 +25,8 @@ class SplashWidget extends StatelessWidget {
           Tasbe7.routeName:(context) =>Tasbe7(),
           SuraContent.routeName: (context) => SuraContent(args: settings.arguments),
           RadioScreen.routeName:(context) => RadioScreen(),
-          HadethScreen.routeName:(context)=>HadethScreen()
+          HadethScreen.routeName:(context)=>HadethScreen(),
+          HadethContent.routeName:(context)=>HadethContent(args: settings.arguments)
         };
         WidgetBuilder? builder = routes[settings.name];
         if (builder == null) return null;
