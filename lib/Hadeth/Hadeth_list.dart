@@ -15,9 +15,9 @@ class HadethList extends StatefulWidget {
 }
 
 class _HadethListState extends State<HadethList> {
-  late Future<List<Widget>> futureSuraList;
+  late Future<List<Widget>> futureHadethList;
 
-  Future<List<Widget>> buildSuraList() async {
+  Future<List<Widget>> buildHadethList() async {
     final List<Widget> hadethList = [
       Container(
           alignment: Alignment.center,
@@ -26,53 +26,37 @@ class _HadethListState extends State<HadethList> {
             top: HadethList.borderSide,
             bottom: HadethList.borderSide,
           )),
-          child: Text("اسم الحديث"))
+          child: Text("الاحاديث"))
     ];
 
     String data = await getFileData("assets/ahadeth_names.txt");
-    List<String> ahadeath = data.split("#");
-
-    ahadeath
-        .map((hadeth) {
-          return hadeth.replaceAll(' ', '');
-        })
-        .toList()
-        .asMap()
-        .forEach((index, hadeth) {
-          hadethList.add(HadethLink(
-            hadethNumber: index + 1,
-            decoration: BoxDecoration(
-                border: Border(
-              right: HadethList.borderSide,
-            )),
-          ));
-
-          hadethList.add(HadethLink(
-            hadethNumber: index + 1,
-            hadethName: hadeth,
-          ));
-        });
-
+    List<String> ahadeath = data.split(",");
+    ahadeath.toList().asMap().forEach((index, hadethName) {
+      hadethList.add(HadethLink(
+        hadethNumber: index + 1,
+        hadethName: hadethName,
+      ));
+    });
     return hadethList;
   }
 
   @override
   void initState() {
     super.initState();
-    futureSuraList = buildSuraList();
+    futureHadethList = buildHadethList();
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Widget>>(
-        future: futureSuraList,
+        future: futureHadethList,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Expanded(
-              flex: 3,
+              flex: 2,
               child: GridView.count(
                 crossAxisCount: 1,
-                childAspectRatio: 6/1,
+                childAspectRatio: 6 / 1,
                 children: snapshot.data!.toList(),
               ),
             );
