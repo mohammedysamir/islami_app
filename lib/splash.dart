@@ -7,6 +7,7 @@ import 'package:islami/quran/quran_screen.dart';
 import 'package:islami/radio.dart';
 import 'package:islami/sura_content.dart';
 import 'package:islami/tasbe7.dart';
+import 'package:islami/Settings.dart';
 
 void main() => runApp(SplashWidget());
 
@@ -26,7 +27,8 @@ class SplashWidget extends StatelessWidget {
           SuraContent.routeName: (context) => SuraContent(args: settings.arguments),
           RadioScreen.routeName:(context) => RadioScreen(),
           HadethScreen.routeName:(context)=>HadethScreen(),
-          HadethContent.routeName:(context)=>HadethContent()
+          HadethContent.routeName:(context)=>HadethContent(),
+          Settings.routeName:(context)=>Settings(),
         };
         WidgetBuilder? builder = routes[settings.name];
         if (builder == null) return null;
