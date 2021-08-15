@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:islami/quran/sura_list.dart';
 import 'package:islami/BottomNavBar.dart';
+import 'package:islami/Hadeth/Hadeth_list.dart';
 
 class HadethScreen extends StatefulWidget {
   static const routeName = "hadeth_list";
@@ -37,6 +37,7 @@ class HadethScreenState extends State<HadethScreen> {
                   Image(image: AssetImage("assets/images/basmala_icon.png")),
                 )),
             //Add hadeth list
+            HadethList(),
             BottomNavBar(2),
           ],
         ),
