@@ -1,37 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:islami/Hadeth/HadethLink.dart';
 import 'package:islami/utility/get_file_data.dart';
 
-class HadethContent extends StatefulWidget {
-  const HadethContent({Key? key, required this.args}) : super(key: key);
+class HadethContent extends StatelessWidget {
+  HadethContent({Key? key}) : super(key: key);
 
   static const String routeName = "hadeth_content";
-
-  final args;
-
-  @override
-  State<HadethContent> createState() => _HadethContentState();
-}
-
-class _HadethContentState extends State<HadethContent> {
-  // late Future<String> futureHadethContent;
+  late final args;
   String hadethContent = "";
 
-  void getHadethContent(args) async {
+  Future<String> getHadethContent(args) async {
     String hadethNumber = args.hadethNumber.toString();
-    String data = await getFileData("assets/ahadeth/$hadethNumber.txt");
-    List<String> ahadeth = data.split('\r\n#');
-    hadethContent = ahadeth.elementAt(int.parse(hadethNumber));
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    // futureHadethContent = getHadethContent(widget.args);
-    getHadethContent(widget.args);
+    String data = await getFileData("assets/ahadeth.txt");
+    List<String> ahadeth = data.split('#');
+    hadethContent = ahadeth.elementAt(int.parse(hadethNumber) - 1);
+    hadethContent.replaceAll('\r\n', '');
+    return hadethContent;
   }
 
   @override
   Widget build(BuildContext context) {
+    args = ModalRoute.of(context)!.settings.arguments as HadethArguements;
     return MaterialApp(
         title: 'HadethContent',
         home: Container(
@@ -77,18 +66,36 @@ class _HadethContentState extends State<HadethContent> {
                             children: [
                               Container(
                                   alignment: Alignment.center,
-                                  child: Text("${widget.args.hadethName}")),
+                                  child: Text(
+                                    "${args.hadethName}",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  )),
                             ],
                           ),
                         ),
                         Image.asset("assets/images/Line_4.png"),
-                        Expanded(child: Text(hadethContent), flex: 9)
+                        FutureBuilder<String>(
+                            future: getHadethContent(args),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                return Expanded(
+                                  flex: 9,
+                                  child: SingleChildScrollView(
+                                      scrollDirection: Axis.vertical,
+                                      padding: EdgeInsets.all(15.0),
+                                      child: Text(snapshot.data!)),
+                                );
+                              } else if (snapshot.hasError) {
+                                return Text("${snapshot.error}");
+                              }
+                              return const CircularProgressIndicator();
+                            })
                       ],
                     ),
                   ),
-                )
-                    // child: SuraList(),
-                    ),
+                )),
               ],
             ),
           ),

@@ -26,7 +26,7 @@ class SplashWidget extends StatelessWidget {
           SuraContent.routeName: (context) => SuraContent(args: settings.arguments),
           RadioScreen.routeName:(context) => RadioScreen(),
           HadethScreen.routeName:(context)=>HadethScreen(),
-          HadethContent.routeName:(context)=>HadethContent(args: settings.arguments)
+          HadethContent.routeName:(context)=>HadethContent()
         };
         WidgetBuilder? builder = routes[settings.name];
         if (builder == null) return null;
