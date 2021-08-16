@@ -3,10 +3,14 @@
 * ### An application provide ability to read Quran and hadeth
 * ### The application consists of:
   * Quran radio
-    [radio](assets/Screenshots/radio.jpg)
+    <br>
+    <img src="assets/Screenshots/radio.jpg" width="300">
   * Quran's surahs
-    [surah](assets/Screenshots/quran.jpg)
+     <br>
+     <img src="assets/Screenshots/quran.jpg" width="300">
   * ahadeth
-    [ahadeth](assets/Screenshots/ahadeth.jpg)
+     <br>
+     <img src="assets/Screenshots/ahadeth.jpg" width="300">
   * tasbe7
-    [seb7a](assets/Screenshots/tasbe7.jpg)
+     <br>
+     <img src="assets/Screenshots/tasbe7.jpg" width="300">
