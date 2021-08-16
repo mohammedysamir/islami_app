@@ -35,7 +35,7 @@ class _SettingsState extends State<Settings> {
                       child: Text(
                         'Language',
                         style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
+                            fontSize: 22, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
                       onTap: onLanguageChange,
@@ -47,7 +47,7 @@ class _SettingsState extends State<Settings> {
                       child: Text(
                         'Theme',
                         style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
+                            fontSize: 22, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
                       onTap: onThemeChange,
@@ -70,8 +70,16 @@ class _SettingsState extends State<Settings> {
   void onLanguageChange() {
     showModalBottomSheet<void>(
         context: context,
+        backgroundColor: Colors.transparent,
         builder: (context) => Container(
+              height: MediaQuery.of(context).size.height * 0.25,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50),
+                      topRight: Radius.circular(50)),
+                  color: Colors.white),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
@@ -106,8 +114,16 @@ class _SettingsState extends State<Settings> {
   void onThemeChange() {
     showModalBottomSheet<void>(
         context: context,
+        backgroundColor: Colors.transparent,
         builder: (context) => Container(
+              height: MediaQuery.of(context).size.height * 0.25,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50),
+                      topRight: Radius.circular(50)),
+                  color: Colors.white),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
