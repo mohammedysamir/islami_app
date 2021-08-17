@@ -4,6 +4,8 @@ import 'package:islami/quran/sura_list.dart';
 import 'package:islami/BottomNavBar.dart';
 import 'package:islami/utility/islami_scaffold.dart';
 
+import '../sidemenu.dart';
+
 class QuranScreen extends StatefulWidget {
   QuranScreen({Key? key});
   static const routeName = "/quran_list";
@@ -11,7 +13,6 @@ class QuranScreen extends StatefulWidget {
   @override
   QuranScreenState createState() => QuranScreenState();
 }
-
 class QuranScreenState extends State<QuranScreen> {
   @override
   Widget build(BuildContext context) {
@@ -28,6 +29,6 @@ class QuranScreenState extends State<QuranScreen> {
           SuraList(),
         ],
       ),
-    );
+    )
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/BottomNavBar.dart';
 import 'package:islami/utility/islami_scaffold.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RadioScreen extends StatelessWidget {
   static const String routeName = 'radio';
@@ -20,7 +21,7 @@ class RadioScreen extends StatelessWidget {
                   fit: BoxFit.fill)),
           Expanded(
             child: Text(
-              'اذاعة القرآن الكريم',
+              AppLocalizations.of(context)!.quranchannel,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),

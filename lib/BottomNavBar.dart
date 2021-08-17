@@ -3,7 +3,7 @@ import 'package:islami/Hadeth/HadethScreen.dart';
 import 'package:islami/quran/quran_screen.dart';
 import 'package:islami/radio.dart';
 import 'package:islami/tasbe7.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class BottomNavBar extends StatefulWidget {
   BottomNavBar({Key? key, required this.currentIndex});
 
@@ -39,22 +39,22 @@ class _BottomNavBarState extends State<BottomNavBar> {
               icon: ImageIcon(
                 AssetImage("assets/images/radio.png"),
               ),
-              label: "راديو"),
+              label:AppLocalizations.of(context)!.radio ),
           BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/sebha.png"),
               ),
-              label: "التسبيح"),
+              label: AppLocalizations.of(context)!.eltasbeh),
           BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/quran-quran-svgrepo-com.png"),
               ),
-              label: "الاحاديث"),
+              label: AppLocalizations.of(context)!.alahadis),
           BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/quran.png"),
               ),
-              label: "القرآن"),
+              label: AppLocalizations.of(context)!.alquran),
         ],
       ),
     );
