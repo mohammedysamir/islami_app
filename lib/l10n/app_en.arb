@@ -11,7 +11,8 @@
     "eslami" : "Islami",
     "settings" : "Settings",
     "theme" : "Theme",
-    "theme" : "Dark theme",
     "dark": "Dark",
-    "light" : "Light"
+    "light" : "Light",
+    "settings":"settings"
+
 }

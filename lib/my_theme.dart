@@ -11,7 +11,6 @@ class MyThemeData{
       backgroundColor: Colors.black,
       accentColor: Color(0xFFF8F8F8),
       brightness: Brightness.light,
-      bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.white),
 
       textTheme: const TextTheme(
         bodyText1: TextStyle(fontSize: 14.0, color: lightThemeBlackColor),
@@ -55,7 +54,7 @@ class MyThemeData{
     backgroundColor: Colors.white,
     brightness: Brightness.dark,
     accentColor: Color(0x80141A2E),
-      bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.black),
+
     textTheme: const TextTheme(
       bodyText1: TextStyle(fontSize: 14.0, color: darkThemeYellowColor),
       bodyText2: TextStyle(fontSize: 14.0, color: Colors.white),
