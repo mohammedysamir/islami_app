@@ -1,6 +1,11 @@
+
+
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:islami/sura_content_arguments.dart';
 import 'package:islami/sura_content.dart';
+
 class SuraLink extends StatelessWidget {
   const SuraLink ({Key? key, required this.suraNumber, required this.text, this.decoration, this.suraName}) : super(key: key);
 
