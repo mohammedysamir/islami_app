@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/BottomNavBar.dart';
 
@@ -10,6 +11,9 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  bool isDark = false;
+  String currentChosenLanguage = "English";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,27 +36,68 @@ class _SettingsState extends State<Settings> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
                     child: InkWell(
-                      child: Text(
-                        'Language',
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(7.0, 0, 8.0, 0),
+                            child: Image.asset('assets/images/globe.png'),
+                          ),
+                          Text(
+                            'Language',
+                            style: TextStyle(
+                                fontSize: 22, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.start,
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+                              child: Text(
+                                currentChosenLanguage,
+                                style: TextStyle(
+                                  fontSize: 22,
+                                ),
+                                textAlign: TextAlign.end,
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                       onTap: onLanguageChange,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
-                    child: InkWell(
-                      child: Text(
-                        'Theme',
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
+                  Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+                      child: Image.asset(
+                        'assets/images/night_mode.png',
                       ),
-                      onTap: onThemeChange,
                     ),
-                  )
+                    Text(
+                      'Theme',
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.start,
+                    ),
+                    Expanded(
+                      child: Container(
+                        alignment: Alignment.topRight,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Switch(
+                            value: isDark,
+                            activeColor: Colors.white,
+                            onChanged: (value) {
+                              setState(() {
+                                isDark = value;
+                                if (isDark) {
+                                } else {}
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    )
+                  ]),
                 ],
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -68,6 +113,10 @@ class _SettingsState extends State<Settings> {
   }
 
   void onLanguageChange() {
+    // setState(() {
+    //   if(currentChosenLanguage == "English") currentChosenLanguage= "العربية";
+    //   else  currentChosenLanguage= "English";
+    // });
     showModalBottomSheet<void>(
         context: context,
         backgroundColor: Colors.transparent,
@@ -91,7 +140,11 @@ class _SettingsState extends State<Settings> {
                             fontSize: 18, fontWeight: FontWeight.normal),
                         textAlign: TextAlign.center,
                       ),
-                      onTap: null,
+                      onTap: () => {
+                        setState(() {
+                          currentChosenLanguage = "العربية";
+                        })
+                      },
                     ),
                   ),
                   Padding(
@@ -103,51 +156,11 @@ class _SettingsState extends State<Settings> {
                             fontSize: 18, fontWeight: FontWeight.normal),
                         textAlign: TextAlign.center,
                       ),
-                      onTap: null,
-                    ),
-                  )
-                ],
-              ),
-            ));
-  }
-
-  void onThemeChange() {
-    showModalBottomSheet<void>(
-        context: context,
-        backgroundColor: Colors.transparent,
-        builder: (context) => Container(
-              height: MediaQuery.of(context).size.height * 0.25,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      topRight: Radius.circular(50)),
-                  color: Colors.white),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: InkWell(
-                      child: Text(
-                        'Dark',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.normal),
-                        textAlign: TextAlign.center,
-                      ),
-                      onTap: null,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: InkWell(
-                      child: Text(
-                        'Light',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.normal),
-                        textAlign: TextAlign.center,
-                      ),
-                      onTap: null,
+                      onTap: () => {
+                        setState(() {
+                          currentChosenLanguage = "English";
+                        })
+                      },
                     ),
                   )
                 ],
