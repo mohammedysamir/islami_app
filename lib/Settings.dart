@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/BottomNavBar.dart';
 import 'package:islami/AppConfig.dart';
 import 'package:islami/utility/islami_scaffold.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -14,7 +16,7 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  bool isDark = false;
+  bool isDark = true;
   String currentChosenLanguage = "English";
   late AppConfigProvider provider;
 
@@ -38,17 +40,20 @@ class _SettingsState extends State<Settings> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.fromLTRB(7.0, 0, 8.0, 0),
-                        child: Image.asset('assets/images/globe.png'),
+                        child: Image.asset(
+                          'assets/images/globe.png',
+                          color: isDark ? Colors.white70 : Colors.black,
+                        ),
                       ),
                       Text(
-                        'Language',
+                        AppLocalizations.of(context)!.language,
                         style: TextStyle(
                             fontSize: 22, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.start,
                       ),
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+                          padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
                           child: Text(
                             currentChosenLanguage,
                             style: TextStyle(
@@ -68,33 +73,36 @@ class _SettingsState extends State<Settings> {
                   padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
                   child: Image.asset(
                     'assets/images/night_mode.png',
+                    color: isDark ? Colors.white70 : Colors.black,
                   ),
                 ),
                 Text(
-                  'Theme',
-                  style:
-                  TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  AppLocalizations.of(context)!.theme,
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.start,
                 ),
                 Expanded(
                   child: Container(
-                    alignment: Alignment.topRight,
+                    alignment: currentChosenLanguage == "English"
+                        ? Alignment.topRight
+                        : Alignment.topLeft,
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
                       child: Switch(
+                        dragStartBehavior: DragStartBehavior.start,
                         value: isDark,
-                        activeColor: Colors.white,
-                        onChanged: (value) {
+                        activeColor: Colors.black,
+                        onChanged: (val) {
                           setState(() {
-                            isDark = value;
-                            if (isDark) {
-                            } else {}
+                            isDark = val;
+                            provider.toggleTheme();
+                            print(isDark);
                           });
                         },
                       ),
                     ),
                   ),
-                )
+                ),
               ]),
             ],
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -103,8 +111,6 @@ class _SettingsState extends State<Settings> {
         ]),
       ),
     );
-
-
   }
 
   void onLanguageChange() {
@@ -114,10 +120,10 @@ class _SettingsState extends State<Settings> {
         builder: (context) => Container(
               height: MediaQuery.of(context).size.height * 0.25,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      topRight: Radius.circular(50)),
-                  color: Colors.white),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50),
+                    topRight: Radius.circular(50)),
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
