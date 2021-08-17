@@ -1,13 +1,10 @@
 
-
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/quran/sura_link.dart';
 import 'package:islami/utility/get_file_data.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class SuraList extends StatefulWidget {
   const SuraList({Key? key}) : super(key: key);
 
@@ -37,7 +34,7 @@ class _SuraListState extends State<SuraList> {
               right: SuraList.borderSide,
             )
         ),
-        child: Text("عدد الآيات"),
+        child: Text('surah name'),
       ),
       Container(
         alignment: Alignment.center,
@@ -47,7 +44,7 @@ class _SuraListState extends State<SuraList> {
             bottom: SuraList.borderSide,
           )
         ),
-        child: Text("اسم السورة")
+        child: Text('number of verses')
       )
     ];
 
