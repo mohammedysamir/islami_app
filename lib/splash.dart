@@ -10,6 +10,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islami/AppConfig.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'Hadeth/HadethContent.dart';
 //void main() => runApp(SplashWidget());
 
 class SplashWidget extends StatelessWidget {
