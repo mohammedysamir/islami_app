@@ -59,7 +59,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
           BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/settings.png"),
-                color: currentIndex == 4 ? Colors.black : Colors.white,
               ),
               label: AppLocalizations.of(context)!.settings),
         ],
@@ -82,7 +81,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       if (index == BottomNavBar.quranScreenIndex) {
         Navigator.pushNamed(context, QuranScreen.routeName);
       }
-      if(index == 4){
+      if(index == BottomNavBar.settingsIndex){
         Navigator.pushNamed(context,Settings.routeName);
       }
     });

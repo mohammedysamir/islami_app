@@ -37,7 +37,7 @@ return ChangeNotifierProvider(
     GlobalCupertinoLocalizations.delegate,
   ],
   supportedLocales: AppLocalizations.supportedLocales,
-  locale: Locale.fromSubtags(languageCode: provider.currentLnaguage ),
+  locale: Locale.fromSubtags(languageCode: provider.currentLanguage ),
 
       themeMode: ThemeMode.dark,
       theme: MyThemeData.lightTheme,

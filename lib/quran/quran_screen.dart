@@ -29,6 +29,6 @@ class QuranScreenState extends State<QuranScreen> {
           SuraList(),
         ],
       ),
-    )
+    );
   }
 }
