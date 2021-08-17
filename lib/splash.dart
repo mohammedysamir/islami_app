@@ -10,6 +10,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islami/AppConfig.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:islami/Settings.dart';
 import 'Hadeth/HadethContent.dart';
 //void main() => runApp(SplashWidget());
 
@@ -40,7 +41,8 @@ class SplashWidget extends StatelessWidget {
           SuraContent.routeName: (context) => SuraContent(args: settings.arguments),
           RadioScreen.routeName:(context) => RadioScreen(),
           HadethScreen.routeName:(context)=>HadethScreen(),
-          HadethContent.routeName:(context)=>HadethContent()
+          HadethContent.routeName:(context)=>HadethContent(),
+          Settings.routeName:(context)=>Settings()
         };
         WidgetBuilder? builder = routes[settings.name];
         if (builder == null) return null;
