@@ -95,20 +95,18 @@ class _SplashState extends State<Splash> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image.asset("assets/images/logo2.png"),
+                      Image.asset(
+                          isDarkMode ?"assets/images/logo2_dark.png"
+                          :"assets/images/logo2.png"),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(8.0, 50.0, 8.0, 0),
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Image.asset("assets/images/route gold.png"),
-                              Text(
-                                "supervised by Mohamed Nabil",
-                                style: TextStyle(
-                                  color: Color.fromARGB(255, 183, 147, 95),
-                                  fontSize: 18,
-                                ),
-                              )
+                              Image.asset(
+                                  isDarkMode?"assets/images/route gold_dark.png"
+                                  :"assets/images/route gold.png"),
+
                             ]),
                       )
                     ]),

@@ -23,6 +23,7 @@ class HadethContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     args = ModalRoute.of(context)!.settings.arguments as HadethArguements;
     return IslamiScaffold(
       bottomNavBarCurrentIndex: BottomNavBar.hadethScreenIndex,
@@ -56,7 +57,9 @@ class HadethContent extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Image.asset("assets/images/Line_4.png"),
+                      Image.asset(
+                          isDarkMode?"assets/images/Line4_dark.png"
+                          :"assets/images/Line4.png"),
                       FutureBuilder<String>(
                           future: getHadethContent(args),
                           builder: (context, snapshot) {

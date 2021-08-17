@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class MyThemeData{
   static const darkThemeYellowColor = Color(0xFFFACC1D);
-  static const whiteThemeBlackColor = Color(0xFF242424);
+  static const lightThemeBlackColor = Color(0xFF242424);
+  static const lightThemeYellowColor =Color(0xFFB7935F);
 
   static final lightTheme =  ThemeData(
       scaffoldBackgroundColor: Colors.transparent,
@@ -12,7 +13,7 @@ class MyThemeData{
       brightness: Brightness.light,
 
       textTheme: const TextTheme(
-        bodyText1: TextStyle(fontSize: 14.0, color: whiteThemeBlackColor),
+        bodyText1: TextStyle(fontSize: 14.0, color: lightThemeBlackColor),
         bodyText2: TextStyle(fontSize: 14.0, color: Colors.black),
         button: TextStyle(fontSize: 26.0, color: Colors.white),
       ),
@@ -21,13 +22,16 @@ class MyThemeData{
         backgroundColor: Colors.transparent,
       ),
 
+      iconTheme: IconThemeData(
+        color:lightThemeYellowColor
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(whiteThemeBlackColor),
+          backgroundColor: MaterialStateProperty.all<Color>(lightThemeBlackColor),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25.0),
-                  side: BorderSide(color: whiteThemeBlackColor)
+                  side: BorderSide(color: lightThemeBlackColor)
               )
           ),
         ),
@@ -35,8 +39,8 @@ class MyThemeData{
 
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         unselectedItemColor: Colors.white,
-        selectedItemColor: whiteThemeBlackColor,
-        backgroundColor: Color(0xFFB79F9F),
+        selectedItemColor: lightThemeBlackColor,
+        backgroundColor: lightThemeYellowColor,
         showSelectedLabels: true,
         showUnselectedLabels: false,
       )
@@ -61,6 +65,10 @@ class MyThemeData{
       backgroundColor: Colors.transparent,
     ),
 
+      iconTheme: IconThemeData(
+          color:darkThemeYellowColor,
+          size: 40
+      ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(darkThemeYellowColor),

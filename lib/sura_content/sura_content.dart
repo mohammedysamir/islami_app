@@ -78,7 +78,9 @@ class _SuraContentState extends State<SuraContent> {
                         ],
                       ),
                     ),
-                    Image.asset("assets/images/Line_4.png"),
+                    Image.asset(
+                        isDarkMode?"assets/images/Line4_dark.png"
+                        :"assets/images/Line4.png"),
                     Container(
                         alignment: Alignment.center,
                         padding: EdgeInsets.only(top: 5.0),

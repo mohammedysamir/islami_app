@@ -10,8 +10,7 @@ class AppConfigProvider extends ChangeNotifier {
     }
     else {
       themeMode = ThemeMode.light;
-    }
-    notifyListeners();
+    }    notifyListeners();
   }
 
 }

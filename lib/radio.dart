@@ -9,6 +9,7 @@ class RadioScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return IslamiScaffold(
       bottomNavBarCurrentIndex: BottomNavBar.radioScreenIndex,
       child: Column(
@@ -20,10 +21,7 @@ class RadioScreen extends StatelessWidget {
           Expanded(
             child: Text(
               'اذاعة القرآن الكريم',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
@@ -32,15 +30,18 @@ class RadioScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Image.asset(
-                  'assets/images/Icon_previous.png',
-                  fit: BoxFit.cover,
+                Icon(
+                  Icons.skip_previous,
+                  semanticLabel: 'skip previous',
                 ),
-                Image.asset(
-                  'assets/images/Icon_play.png',
-                  fit: BoxFit.cover,
+                Icon(
+                  Icons.play_arrow_rounded,
+                  semanticLabel: 'play',
                 ),
-                Image.asset('assets/images/Icon_next.png', fit: BoxFit.cover),
+                Icon(
+                  Icons.skip_next,
+                  semanticLabel: 'skip next',
+                ),
               ],
             ),
           ),

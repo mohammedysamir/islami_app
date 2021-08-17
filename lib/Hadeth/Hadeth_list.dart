@@ -26,7 +26,8 @@ class _HadethListState extends State<HadethList> {
             top: HadethList.borderSide,
             bottom: HadethList.borderSide,
           )),
-          child: Text("الاحاديث"))
+          child: Text("الاحاديث", style:TextStyle(fontSize: 25.0))
+      )
     ];
 
     String data = await getFileData("assets/ahadeth_names.txt");

@@ -37,13 +37,16 @@ class _Tasbe7State extends State<Tasbe7> with TickerProviderStateMixin {
 // tweens are like modifiers for an animation. they can change its range or even it output type
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return IslamiScaffold(
       bottomNavBarCurrentIndex: BottomNavBar.tasbe7ScreenIndex,
       child: Column(
         children: [
           Expanded(
             child: Image(
-              image: AssetImage('assets/images/head of seb7a.png'),
+              image: AssetImage(
+                  isDarkMode?'assets/images/head of seb7a_dark.png'
+                  :'assets/images/head of seb7a.png'),
               fit: BoxFit.fill,
             ),
           ),
@@ -56,7 +59,9 @@ class _Tasbe7State extends State<Tasbe7> with TickerProviderStateMixin {
                     _controller.reverse();
                 }),
               child: Image(
-                image: AssetImage('assets/images/body of seb7a.png'),
+                image: AssetImage(
+                    isDarkMode?'assets/images/body of seb7a_dark.png'
+                    :'assets/images/body of seb7a.png'),
                 fit: BoxFit.fill,
               ),
             ),
