@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/BottomNavBar.dart';
+import 'package:islami/AppConfig.dart';
+import 'package:provider/provider.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -13,9 +15,11 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   bool isDark = false;
   String currentChosenLanguage = "English";
+  late AppConfigProvider provider;
 
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       body: Column(
         children: [
@@ -113,10 +117,6 @@ class _SettingsState extends State<Settings> {
   }
 
   void onLanguageChange() {
-    // setState(() {
-    //   if(currentChosenLanguage == "English") currentChosenLanguage= "العربية";
-    //   else  currentChosenLanguage= "English";
-    // });
     showModalBottomSheet<void>(
         context: context,
         backgroundColor: Colors.transparent,
@@ -143,6 +143,7 @@ class _SettingsState extends State<Settings> {
                       onTap: () => {
                         setState(() {
                           currentChosenLanguage = "العربية";
+                          provider.changeLanguage("ar");
                         })
                       },
                     ),
@@ -159,6 +160,7 @@ class _SettingsState extends State<Settings> {
                       onTap: () => {
                         setState(() {
                           currentChosenLanguage = "English";
+                          provider.changeLanguage("en");
                         })
                       },
                     ),
