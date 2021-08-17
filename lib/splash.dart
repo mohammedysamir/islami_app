@@ -1,23 +1,36 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:islami/Hadeth/HadethContent.dart';
 import 'package:islami/Hadeth/HadethScreen.dart';
 import 'package:islami/quran/quran_screen.dart';
 import 'package:islami/radio.dart';
-import 'package:islami/sura_content.dart';
+import 'package:islami/sidemenu.dart';
+import 'package:islami/sura_content.dart'; 
 import 'package:islami/tasbe7.dart';
-import 'package:islami/Settings.dart';
-
-void main() => runApp(SplashWidget());
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:islami/AppConfig.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'Hadeth/HadethContent.dart';
+//void main() => runApp(SplashWidget());
 
 class SplashWidget extends StatelessWidget {
 
   const SplashWidget({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ChangeNotifierProvider(
+     create: (buildcontext)=>AppConfigProvider(),
+     builder: (buildcontext,widget){
+       final provider= Provider.of<AppConfigProvider>(buildcontext);
+       return MaterialApp(
+      localizationsDelegates: [
+    AppLocalizations.delegate, // Add this line
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+  ],
+  supportedLocales: AppLocalizations.supportedLocales,
+  locale: Locale.fromSubtags(languageCode: provider.currentLnaguage ),
       initialRoute: 'Splash',
       onGenerateRoute: (RouteSettings settings) {
         var routes = <String, WidgetBuilder>{
@@ -27,8 +40,7 @@ class SplashWidget extends StatelessWidget {
           SuraContent.routeName: (context) => SuraContent(args: settings.arguments),
           RadioScreen.routeName:(context) => RadioScreen(),
           HadethScreen.routeName:(context)=>HadethScreen(),
-          HadethContent.routeName:(context)=>HadethContent(),
-          Settings.routeName:(context)=>Settings(),
+          HadethContent.routeName:(context)=>HadethContent()
         };
         WidgetBuilder? builder = routes[settings.name];
         if (builder == null) return null;
@@ -41,6 +53,9 @@ class SplashWidget extends StatelessWidget {
       ),
       home: Splash(),
     );
+     }
+    );
+    
   }
 }
 
@@ -65,6 +80,7 @@ class _SplashState extends State<Splash> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: SideMenu(),
         body: Stack(
           children: [
             Container(

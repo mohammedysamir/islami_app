@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:islami/Hadeth/HadethScreen.dart';
 import 'package:islami/quran/quran_screen.dart';
 import 'package:islami/radio.dart';
-import 'package:islami/Settings.dart';
 import 'package:islami/tasbe7.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class BottomNavBar extends StatefulWidget {
   static late int currentIndex;
 
@@ -43,30 +42,25 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 AssetImage("assets/images/radio.png"),
                 color: currentIndex == 0 ? Colors.black : Colors.white,
               ),
-              label: "راديو"),
+              label:AppLocalizations.of(context)!.radio ),
           BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/sebha.png"),
                 color: currentIndex == 1 ? Colors.black : Colors.white,
               ),
-              label: "التسبيح"),
+              label: AppLocalizations.of(context)!.eltasbeh),
           BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/quran-quran-svgrepo-com.png"),
                 color: currentIndex == 2 ? Colors.black : Colors.white,
               ),
-              label: "الاحاديث"),
+              label: AppLocalizations.of(context)!.alahadis),
           BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/quran.png"),
                 color: currentIndex == 3 ? Colors.black : Colors.white,
               ),
-              label: "القرآن"),
-          BottomNavigationBarItem(icon: ImageIcon(
-            AssetImage("assets/images/settings.png"),
-            color: currentIndex == 4 ? Colors.black : Colors.white,
-          ),
-              label: "الاعدادات")
+              label: AppLocalizations.of(context)!.alquran),
         ],
       ),
     );
@@ -86,9 +80,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
       }
       if (index == 3) {
         Navigator.pushNamed(context, QuranScreen.routeName);
-      }
-      if(index == 4){
-        Navigator.pushNamed(context, Settings.routeName);
       }
     });
   }
