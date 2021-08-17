@@ -11,6 +11,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islami/AppConfig.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:islami/Settings.dart';
 import 'Hadeth/HadethContent.dart';
 //void main() => runApp(SplashWidget());
 
@@ -48,8 +49,9 @@ return ChangeNotifierProvider(
         Tasbe7.routeName:(context) =>Tasbe7(),
         RadioScreen.routeName:(context) => RadioScreen(),
         HadethScreen.routeName:(context)=>HadethScreen(),
-        HadethContent.routeName:(context)=>HadethContent()
-      },
+        HadethContent.routeName:(context)=>HadethContent(),
+      Settings.routeName:(context)=>Settings()
+        },
 
       onGenerateRoute: (settings) {
         if (settings.name == SuraContent.routeName){
