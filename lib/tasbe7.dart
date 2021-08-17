@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:islami/sidemenu.dart';
 import 'background.dart';
 import 'package:islami/BottomNavBar.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class Tasbe7 extends StatefulWidget {
   static String routeName = 'tasbe7';
 
@@ -80,7 +81,7 @@ class _Tasbe7State extends State<Tasbe7> with TickerProviderStateMixin {
                     ),
                     SizedBox(height: 40),
                     Text(
-                      'عدد التسبيحات',
+                      AppLocalizations.of(context)!.numberoftasbeh,
                       // ignore: prefer_const_constructors
                       style: textstyle,
                     ),
