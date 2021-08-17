@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:islami/quran/sura_list.dart';
 import 'package:islami/BottomNavBar.dart';
 
-import '../sidemenu.dart';
-
 class QuranScreen extends StatefulWidget {
   static const routeName = "quran_list";
 
   @override
   QuranScreenState createState() => QuranScreenState();
 }
+
 class QuranScreenState extends State<QuranScreen> {
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,6 @@ class QuranScreenState extends State<QuranScreen> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-         drawer: SideMenu(),
         appBar: AppBar(
           title: const Text("إسلامي", style: TextStyle(color: Colors.black)),
           backgroundColor: Colors.transparent,
