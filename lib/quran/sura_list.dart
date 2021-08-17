@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/quran/sura_link.dart';

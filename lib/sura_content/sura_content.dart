@@ -7,6 +7,7 @@ class SuraContent extends StatefulWidget {
 
   static const String routeName = "/sura_content";
 
+
   final args;
   @override
   State<SuraContent> createState() => _SuraContentState();
@@ -40,6 +41,8 @@ class _SuraContentState extends State<SuraContent> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return IslamiScaffold(
       bottomNavBarCurrentIndex: -1,
       child: Column(
@@ -68,7 +71,10 @@ class _SuraContentState extends State<SuraContent> {
                               alignment: Alignment.center,
                               child: Text("سورة ${widget.args.suraName}", style: Theme.of(context).textTheme.bodyText1)
                           ),
-                          Image.asset("assets/images/Icon_play.png")
+                          Image.asset(
+                            isDarkMode
+                                ?"assets/images/Icon_play_dark.png"
+                                :"assets/images/Icon_play1.png")
                         ],
                       ),
                     ),

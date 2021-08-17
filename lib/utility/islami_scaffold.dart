@@ -1,13 +1,10 @@
-
-
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../BottomNavBar.dart';
 
 class IslamiScaffold extends StatelessWidget {
+
   const IslamiScaffold({
     Key? key,
     required this.child,
@@ -19,14 +16,19 @@ class IslamiScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage("assets/images/bg.png"), fit: BoxFit.fill),
+            image: AssetImage(
+                isDarkMode
+                    ?"assets/images/bg2_dark.png"
+                :"assets/images/bg2.png"), fit: BoxFit.fill),
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("إسلامي"),
+          title:  Text("إسلامي",),
           centerTitle: true,
           elevation: 0,
         ),

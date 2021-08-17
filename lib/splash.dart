@@ -19,6 +19,7 @@ class SplashWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
 
       themeMode: ThemeMode.dark,
@@ -73,11 +74,15 @@ class _SplashState extends State<Splash> {
   }
 
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
         body: Stack(
           children: [
             Container(
-              child: Image.asset("assets/images/bg2.png", fit: BoxFit.fill),
+              child: Image.asset(
+                  isDarkMode ?"assets/images/bg_dark.png"
+                  :"assets/images/bg.png", fit: BoxFit.fill),
               width: MediaQuery
                   .of(context)
                   .size
