@@ -5,60 +5,54 @@ import 'package:islami/radio.dart';
 import 'package:islami/tasbe7.dart';
 
 class BottomNavBar extends StatefulWidget {
-  static late int currentIndex;
+  BottomNavBar({Key? key, required this.currentIndex});
 
-  BottomNavBar(int index) {
-    currentIndex = index;
-  }
+  static const int radioScreenIndex = 0;
+  static const int tasbe7ScreenIndex = 1;
+  static const int hadethScreenIndex = 2;
+  static const int quranScreenIndex = 3;
+  static const int settingsIndex = 4;
+
+  final int currentIndex;
 
   @override
   _BottomNavBarState createState() => _BottomNavBarState();
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  get currentIndex => BottomNavBar.currentIndex;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * 0.12,
       child: BottomNavigationBar(
-        backgroundColor: Color.fromARGB(255, 183, 147, 95),
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.black,
         selectedFontSize: 12,
-        unselectedItemColor: Colors.white,
-        showSelectedLabels: true,
-        showUnselectedLabels: false,
         unselectedFontSize: 12,
-        currentIndex: currentIndex,
+        currentIndex: widget.currentIndex,
         onTap: onItemTapped,
-        iconSize: 40,
+        // iconSize: 40,
         elevation: 15,
         items: [
           BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/radio.png"),
-                color: currentIndex == 0 ? Colors.black : Colors.white,
               ),
               label: "راديو"),
           BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/sebha.png"),
-                color: currentIndex == 1 ? Colors.black : Colors.white,
               ),
               label: "التسبيح"),
           BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/quran-quran-svgrepo-com.png"),
-                color: currentIndex == 2 ? Colors.black : Colors.white,
               ),
               label: "الاحاديث"),
           BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/quran.png"),
-                color: currentIndex == 3 ? Colors.black : Colors.white,
               ),
               label: "القرآن"),
         ],
@@ -69,16 +63,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
   void onItemTapped(int index) {
     setState(() {
       Navigator.pop(context);
-      if (index == 0) {
+      if (index == BottomNavBar.radioScreenIndex) {
         Navigator.pushNamed(context, RadioScreen.routeName);
       }
-      if (index == 1) {
+      if (index == BottomNavBar.tasbe7ScreenIndex) {
         Navigator.pushNamed(context, Tasbe7.routeName);
       }
-      if (index == 2) {
+      if (index == BottomNavBar.hadethScreenIndex) {
         Navigator.pushNamed(context,HadethScreen.routeName);
       }
-      if (index == 3) {
+      if (index == BottomNavBar.quranScreenIndex) {
         Navigator.pushNamed(context, QuranScreen.routeName);
       }
     });

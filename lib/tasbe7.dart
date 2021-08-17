@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'background.dart';
+import 'package:islami/utility/islami_scaffold.dart';
 import 'package:islami/BottomNavBar.dart';
 
 class Tasbe7 extends StatefulWidget {
-  static String routeName = 'tasbe7';
+  static String routeName = '/tasbe7';
 
   @override
   _Tasbe7State createState() => _Tasbe7State();
@@ -37,102 +37,59 @@ class _Tasbe7State extends State<Tasbe7> with TickerProviderStateMixin {
 // tweens are like modifiers for an animation. they can change its range or even it output type
   @override
   Widget build(BuildContext context) {
-    return Stack(children: <Widget>[
-      background(),
-      Scaffold(
-        backgroundColor: Colors.transparent,
-        body: SafeArea(
-          child: Column(
-            children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.849,
-                child: Column(
-                  children: [
-                    Center(
-                      child: Text(
-                        'اسلامي',
-                        style: TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Image(
-                      image: AssetImage('assets/images/head of seb7a.png'),
-                      height: 40.0,
-                      width: 40.0,
-                      fit: BoxFit.fitWidth,
-                    ),
-                    RotationTransition(
-                      turns: Tween(begin: start, end: end).animate(_controller)
-                        ..addStatusListener((status) {
-                          if (status == AnimationStatus.completed)
-                            _controller.reverse();
-                        }),
-                      child: Image(
-                        image: AssetImage('assets/images/body of seb7a.png'),
-                        height: 150.0,
-                        width: 150.0,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(height: 40),
-                    Text(
-                      'عدد التسبيحات',
-                      // ignore: prefer_const_constructors
-                      style: textstyle,
-                    ),
-                    SizedBox(height: 20.0),
-                    ElevatedButton(
-                      onPressed: () {
-                        increment();
-                        _controller.forward();
-                      },
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.grey),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      side:
-                                          BorderSide(color: Colors.white70)))),
-                      child: Text(
-                        numberoftasbe7tobeshown.toString(),
-                        style: textstyle,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0),
-                      child: Container(
-                        color: Colors.brown[300],
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        child: Text(
-                          du3a2,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                child: BottomNavBar(1),
-              ),
-            ],
+    return IslamiScaffold(
+      bottomNavBarCurrentIndex: BottomNavBar.tasbe7ScreenIndex,
+      child: Column(
+        children: [
+          Expanded(
+            child: Image(
+              image: AssetImage('assets/images/head of seb7a.png'),
+              fit: BoxFit.fill,
+            ),
           ),
-        ),
-      )
-    ]);
+          Expanded(
+            flex:2,
+            child: RotationTransition(
+              turns: Tween(begin: start, end: end).animate(_controller)
+                ..addStatusListener((status) {
+                  if (status == AnimationStatus.completed)
+                    _controller.reverse();
+                }),
+              child: Image(
+                image: AssetImage('assets/images/body of seb7a.png'),
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              alignment: Alignment.center,
+              child: Text(
+                'عدد التسبيحات',
+              ),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              numberoftasbe7tobeshown.toString(),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              increment();
+              _controller.forward();
+            },
+            child: Text(
+              du3a2,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.button,
+            ),
+          ),
+          Expanded(flex: 1, child: Container()),
+        ],
+      ),
+    );
   }
 
   void increment() {
