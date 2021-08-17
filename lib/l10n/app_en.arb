@@ -12,7 +12,7 @@
     "settings" : "Settings",
     "theme" : "Theme",
     "dark": "Dark",
-    "light" : "Light"
+    "light" : "Light",
     "settings":"settings"
 
 }

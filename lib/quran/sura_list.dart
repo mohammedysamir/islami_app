@@ -1,7 +1,5 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:islami/quran/sura_link.dart';
 import 'package:islami/utility/get_file_data.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:islami/sura_content_arguments.dart';
-import 'package:islami/sura_content.dart';
+import 'package:flutter/material.dart';
+import 'package:islami/sura_content/sura_content_arguments.dart';
+import 'package:islami/sura_content/sura_content.dart';
 class SuraLink extends StatelessWidget {
   const SuraLink ({Key? key, required this.suraNumber, required this.text, this.decoration, this.suraName}) : super(key: key);
 
@@ -20,25 +21,11 @@ class SuraLink extends StatelessWidget {
               suraName
           ),
         );
-        // TODO: navigate to sura screen
-        // from https://flutter.dev/docs/cookbook/navigation/navigate-with-arguments
-        // e.g:
-        // Navigator.pushNamed(
-        //   context,
-        //   "/sura_screen",
-        //   arguments: suraNumber,
-        // );
-
-        // or
-
-        // from https://flutter.dev/docs/cookbook/navigation/passing-data
-        // e.g: Navigator.push(context, materialPageRoute(builder: (context) => SuraScreen(suraNumber: this.suraNumber))
-        //loading bar
       },
       child: Container(
           alignment: Alignment.center,
           decoration: decoration,
-          child: Text(text),
+          child: Text(text, style: Theme.of(context).textTheme.bodyText2),
       ),
     );
   }

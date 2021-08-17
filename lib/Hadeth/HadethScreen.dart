@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/BottomNavBar.dart';
 import 'package:islami/Hadeth/Hadeth_list.dart';
+import 'package:islami/utility/islami_scaffold.dart';
 
 class HadethScreen extends StatefulWidget {
   static const routeName = "hadeth_list";
@@ -13,34 +14,21 @@ class HadethScreen extends StatefulWidget {
 class HadethScreenState extends State<HadethScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage("assets/images/bg3.png"), fit: BoxFit.fill),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          title: const Text("إسلامي", style: TextStyle(color: Colors.black)),
-          backgroundColor: Colors.transparent,
-          centerTitle: true,
-          elevation: 0,
-        ),
-        body: Column(
-          children: [
-            Expanded(
-                child: Container(
-                  width:MediaQuery.of(context).size.width,
-                  height:MediaQuery.of(context).size.height*0.25 ,
-                  alignment: Alignment.center,
-                  child:
-                  Image(image: AssetImage("assets/images/basmala_icon.png")),
-                )),
-            //Add hadeth list
-            HadethList(),
-            BottomNavBar(2),
-          ],
-        ),
+    return IslamiScaffold(
+      bottomNavBarCurrentIndex: BottomNavBar.hadethScreenIndex,
+      child: Column(
+        children: [
+          Expanded(
+              child: Container(
+                width:MediaQuery.of(context).size.width,
+                height:MediaQuery.of(context).size.height*0.25 ,
+                alignment: Alignment.center,
+                child:
+                Image(image: AssetImage("assets/images/basmala_icon.png")),
+              )),
+          //Add hadeth list
+          HadethList(),
+        ],
       ),
     );
   }
