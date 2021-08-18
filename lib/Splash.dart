@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:islami/Hadeth/HadethScreen.dart';
-import 'package:islami/quran/quran_screen.dart';
-import 'package:islami/radio.dart';
-import 'package:islami/sura_content/sura_content.dart';
-import 'package:islami/sura_content/sura_content_arguments.dart';
-import 'package:islami/sidemenu.dart';
-import 'package:islami/tasbe7.dart';
+import 'package:islami/quran/QuranScreen.dart';
+import 'package:islami/Radio.dart';
+import 'package:islami/sura_content/SuraContent.dart';
+import 'package:islami/sura_content/SuraContentArguments.dart';
+import 'package:islami/Tasbe7.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islami/AppConfig.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -15,7 +14,7 @@ import 'package:islami/Settings.dart';
 import 'Hadeth/HadethContent.dart';
 //void main() => runApp(SplashWidget());
 
-import 'my_theme.dart';
+import 'MyTheme.dart';
 
 void main() => runApp(SplashWidget());
 
@@ -98,7 +97,6 @@ class _SplashState extends State<Splash> {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      drawer: SideMenu(),
         body: Stack(
           children: [
             Container(

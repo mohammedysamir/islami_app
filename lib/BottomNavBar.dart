@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami/Hadeth/HadethScreen.dart';
-import 'package:islami/quran/quran_screen.dart';
-import 'package:islami/radio.dart';
-import 'package:islami/tasbe7.dart';
+import 'package:islami/quran/QuranScreen.dart';
+import 'package:islami/Radio.dart';
+import 'package:islami/Tasbe7.dart';
 import 'package:islami/Settings.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class BottomNavBar extends StatefulWidget {

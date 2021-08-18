@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:islami/quran/sura_list.dart';
+import 'package:islami/quran/SuraList.dart';
 import 'package:islami/BottomNavBar.dart';
 import 'package:islami/utility/islami_scaffold.dart';
-
-import '../sidemenu.dart';
-
 class QuranScreen extends StatefulWidget {
   QuranScreen({Key? key});
   static const routeName = "/quran_list";

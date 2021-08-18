@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/BottomNavBar.dart';
 import 'package:islami/AppConfig.dart';
@@ -16,9 +15,9 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  bool isDark = true;
-  String currentChosenLanguage = "English";
+  late bool isDark;
   late AppConfigProvider provider;
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +51,9 @@ class _SettingsState extends State<Settings> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                           child: Text(
-                            currentChosenLanguage,
+                            provider.currentLanguage=="en"?"English":"اللغة العربية",
                             style: TextStyle(
                               fontSize: 22,
                             ),
@@ -82,7 +81,7 @@ class _SettingsState extends State<Settings> {
                 ),
                 Expanded(
                   child: Container(
-                    alignment: currentChosenLanguage == "English"
+                    alignment: provider.currentLanguage == "en"
                         ? Alignment.topRight
                         : Alignment.topLeft,
                     child: Padding(
@@ -114,7 +113,6 @@ class _SettingsState extends State<Settings> {
   void onLanguageChange() {
     showModalBottomSheet(
         context: context,
-        backgroundColor: Colors.transparent,
         builder: (context) => Container(
               height: MediaQuery.of(context).size.height * 0.25,
               decoration: BoxDecoration(
@@ -137,7 +135,6 @@ class _SettingsState extends State<Settings> {
                       ),
                       onTap: () => {
                         setState(() {
-                          currentChosenLanguage = "العربية";
                           provider.changeLanguage("ar");
                         })
                       },
@@ -154,7 +151,6 @@ class _SettingsState extends State<Settings> {
                       ),
                       onTap: () => {
                         setState(() {
-                          currentChosenLanguage = "English";
                           provider.changeLanguage("en");
                         })
                       },
