@@ -22,9 +22,8 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    isDark = isDarkMode;
     provider = Provider.of<AppConfigProvider>(context);
+    isDark = provider.themeMode == ThemeMode.dark;
     return IslamiScaffold(
       bottomNavBarCurrentIndex: BottomNavBar.settingsIndex,
       child: Container(
@@ -89,15 +88,14 @@ class _SettingsState extends State<Settings> {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
                       child: Switch(
-                        dragStartBehavior: DragStartBehavior.start,
                         value: isDark,
                         activeColor: Colors.black,
                         onChanged: (val) {
                           setState(() {
                             isDark = val;
-                            provider.toggleTheme();
                             print(isDark);
                           });
+                          provider.toggleTheme();
                         },
                       ),
                     ),
