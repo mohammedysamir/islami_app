@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/Hadeth/HadethLink.dart';
 import 'package:islami/utility/get_file_data.dart';
-import 'package:islami/utility/islami_scaffold.dart';
+import 'package:islami/utility/IslamiScaffold.dart';
 
 import '../BottomNavBar.dart';
 

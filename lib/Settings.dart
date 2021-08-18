@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/BottomNavBar.dart';
 import 'package:islami/AppConfig.dart';
-import 'package:islami/utility/islami_scaffold.dart';
+import 'package:islami/utility/IslamiScaffold.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
