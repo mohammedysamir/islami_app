@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami/BottomNavBar.dart';
-import 'package:islami/utility/islami_scaffold.dart';
+import 'package:islami/utility/IslamiScaffold.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RadioScreen extends StatelessWidget {
@@ -10,7 +10,6 @@ class RadioScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return IslamiScaffold(
       bottomNavBarCurrentIndex: BottomNavBar.radioScreenIndex,
       child: Column(

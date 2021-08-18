@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/BottomNavBar.dart';
 import 'package:islami/Hadeth/Hadeth_list.dart';
-import 'package:islami/utility/islami_scaffold.dart';
+import 'package:islami/utility/IslamiScaffold.dart';
 
 class HadethScreen extends StatefulWidget {
   static const routeName = "hadeth_list";
