@@ -21,9 +21,4 @@ class AppConfigProvider extends ChangeNotifier{
     }
     notifyListeners();
   }
-
-  void toggleLanguage(){
-
-  }
-
 }
