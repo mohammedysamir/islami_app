@@ -40,13 +40,13 @@ class _SettingsState extends State<Settings> {
                         padding: const EdgeInsets.fromLTRB(7.0, 0, 8.0, 0),
                         child: Image.asset(
                           'assets/images/globe.png',
-                          color: isDark ? Colors.white70 : Colors.black,
+                          color: isDark ? Colors.white : Colors.black,
                         ),
                       ),
                       Text(
                         AppLocalizations.of(context)!.language,
                         style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
+                            fontSize: 22),
                         textAlign: TextAlign.start,
                       ),
                       Expanded(
@@ -55,7 +55,7 @@ class _SettingsState extends State<Settings> {
                           child: Text(
                             provider.currentLanguage=="en"?"English":"اللغة العربية",
                             style: TextStyle(
-                              fontSize: 22,
+                              fontSize: 20,
                             ),
                             textAlign: TextAlign.end,
                           ),
@@ -71,12 +71,12 @@ class _SettingsState extends State<Settings> {
                   padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
                   child: Image.asset(
                     'assets/images/night_mode.png',
-                    color: isDark ? Colors.white70 : Colors.black,
+                    color: isDark ? Colors.white : Colors.black,
                   ),
                 ),
                 Text(
                   AppLocalizations.of(context)!.theme,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 22),
                   textAlign: TextAlign.start,
                 ),
                 Expanded(
