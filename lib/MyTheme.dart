@@ -54,7 +54,6 @@ class MyThemeData{
     backgroundColor: Colors.white,
     brightness: Brightness.dark,
     accentColor: Color(0x80141A2E),
-    switchTheme: SwitchTheme(),
 
     textTheme: const TextTheme(
       bodyText1: TextStyle(fontSize: 14.0, color: darkThemeYellowColor),

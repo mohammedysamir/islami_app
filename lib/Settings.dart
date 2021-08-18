@@ -88,7 +88,7 @@ class _SettingsState extends State<Settings> {
                       padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
                       child: Switch(
                         value: isDark,
-                        activeColor: Colors.black,
+                        activeColor: Colors.white,
                         onChanged: (val) {
                           setState(() {
                             isDark = val;
