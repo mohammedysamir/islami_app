@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:islami/sura_content/SuraContentArguments.dart';
 import 'package:islami/sura_content/SuraContent.dart';
 class SuraLink extends StatelessWidget {
-  const SuraLink ({Key? key, required this.suraNumber, required this.text, this.decoration, this.suraName}) : super(key: key);
+  const SuraLink ({Key? key, required this.suraNumber, required this.text, required this.decoration, required this.suraName}) : super(key: key);
 
   final suraNumber;
   final suraName;
   final decoration;
   final text;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

@@ -10,7 +10,6 @@ class RadioScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return IslamiScaffold(
       bottomNavBarCurrentIndex: BottomNavBar.radioScreenIndex,
       child: Column(

@@ -1,114 +1,193 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/quran/SuraLink.dart';
-import 'package:islami/utility/get_file_data.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-class SuraList extends StatefulWidget {
-  const SuraList({Key? key}) : super(key: key);
 
-  static const borderSide = BorderSide(
-    color: Color(0xFFB7935F),
-    width: 3.0,
-  );
-
-  @override
-  State<SuraList> createState() => _SuraListState();
-}
-
-class _SuraListState extends State<SuraList> {
-
-  late Future<List<Widget>> futureSuraList;
-
-  Future<List<Widget>> buildSuraList() async {
+import '../MyTheme.dart';
+import 'SuraListEntry.dart';
+class SuraList extends StatelessWidget {
+  SuraList({Key? key}) : super(key: key);
 
 
-    final List<Widget> suraList = [
-      Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-            border: Border(
-              top: SuraList.borderSide,
-              bottom: SuraList.borderSide,
-              right: SuraList.borderSide,
-            )
-        ),
-        child: Text('surah name'),
-      ),
-      Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          border: Border(
-            top: SuraList.borderSide,
-            bottom: SuraList.borderSide,
-          )
-        ),
-        child: Text('number of verses')
-      )
-    ];
+  final List<String> suraNames = ["الفاتحه", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام", "الأعراف", "الأنفال", "التوبة", "يونس", "هود"
+    , "يوسف", "الرعد", "إبراهيم", "الحجر", "النحل", "الإسراء", "الكهف", "مريم", "طه", "الأنبياء", "الحج", "المؤمنون"
+    , "النّور", "الفرقان", "الشعراء", "النّمل", "القصص", "العنكبوت", "الرّوم", "لقمان", "السجدة", "الأحزاب", "سبأ"
+    , "فاطر", "يس", "الصافات", "ص", "الزمر", "غافر", "فصّلت", "الشورى", "الزخرف", "الدّخان", "الجاثية", "الأحقاف"
+    , "محمد", "الفتح", "الحجرات", "ق", "الذاريات", "الطور", "النجم", "القمر", "الرحمن", "الواقعة", "الحديد", "المجادلة"
+    , "الحشر", "الممتحنة", "الصف", "الجمعة", "المنافقون", "التغابن", "الطلاق", "التحريم", "الملك", "القلم", "الحاقة", "المعارج"
+    , "نوح", "الجن", "المزّمّل", "المدّثر", "القيامة", "الإنسان", "المرسلات", "النبأ", "النازعات", "عبس", "التكوير", "الإنفطار"
+    , "المطفّفين", "الإنشقاق", "البروج", "الطارق", "الأعلى", "الغاشية", "الفجر", "البلد", "الشمس", "الليل", "الضحى", "الشرح"
+    , "التين", "العلق", "القدر", "البينة", "الزلزلة", "العاديات", "القارعة", "التكاثر", "العصر",
+    "الهمزة", "الفيل", "قريش", "الماعون", "الكوثر", "الكافرون", "النصر", "المسد", "الإخلاص", "الفلق", "الناس"];
 
-    String data = await getFileData("assets/sura_names.txt");
-    List<String> suras = data.split(",");
-
-    data = await getFileData("assets/sura_size.txt");
-    List<String> suraSize = data.split(" ");
-
-
-    suras.map((sura) {
-      return sura.replaceAll('"', '');
-    }).toList().asMap().forEach((index, sura) {
-      suraList.add(
-        SuraLink(
-          suraNumber: index + 1,
-          decoration: BoxDecoration(
-              border: Border(
-                right: SuraList.borderSide,
-              )
-          ),
-          text: suraSize[index], suraName: sura,
-        )
-      );
-
-      suraList.add(
-        SuraLink(
-          suraNumber: index + 1,
-          text: sura, suraName: sura,
-        )
-      );
-    });
-
-    return suraList;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    futureSuraList = buildSuraList();
-  }
+  final List<int> suraSizes = [7,286,200,176,120,165,206,75,129,109,124,112,43,53,100,128,
+    112,112,98,135,110,78,118,64,79,228,93,89,69,61,34,31,75,54,44,83,182,90,76,85,54,
+    54,90,60,37,34,38,29,19,45,60,50,62,56,79,96,29,22,25,13,14,11,12,18,13,12,30,52,
+    52,45,28,28,20,56,40,31,50,40,46,42,29,19,36,25,22,17,19,26,30,20,15,21,11,8,8,19,
+    5,8,8,11,11,8,3,9,5,4,7,3,6,3,5,4,5,6];
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Widget>>(
-      future: futureSuraList,
-      builder: (context, snapshot) {
-        if (snapshot.hasData){
-          return Expanded(
-            flex: 3,
-            child: Directionality(
-              textDirection: TextDirection.ltr,
-              child: GridView.count(
-                crossAxisCount: 2,
-                childAspectRatio: 4/1,
-                children: snapshot.data!.toList(),
+    final borderSide = Theme
+        .of(context)
+        .brightness == Brightness.dark ?
+    MyThemeData.darkThemeBorderSide : MyThemeData.lightThemeBorderSide;
+
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Expanded(
+        flex: 3,
+        child: Column(
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          top: borderSide,
+                          bottom: borderSide,
+                          right: borderSide,
+                        )
+                      ),
+                      child: Text(AppLocalizations.of(context)!.numberofversus)
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          top: borderSide,
+                          bottom: borderSide,
+                        )
+                      ),
+                      child: Text(AppLocalizations.of(context)!.surahname)
+                    ),
+                  )
+                ],
               ),
             ),
-          );
-        }
-        else if (snapshot.hasError){
-          return Text("${snapshot.error}");
-        }
-
-        return const CircularProgressIndicator();
-      }
+            Expanded(
+              flex: 3,
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 1,
+                  childAspectRatio: 8/1,
+                ),
+                itemCount: suraSizes.length,
+                itemBuilder: (context, index) {
+                  return SuraListEntry(
+                    suraNumber: index + 1,
+                    suraName: suraNames[index],
+                    suraSize: suraSizes[index],
+                  );
+                },
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
+
+// class _SuraListState extends State<SuraList> {
+//
+//   late Future<List<Widget>> futureSuraList;
+//
+//   Future<List<Widget>> buildSuraList() async {
+//
+//
+//     final List<Widget> suraList = [
+//       Container(
+//         alignment: Alignment.center,
+//         decoration: BoxDecoration(
+//             border: Border(
+//               top: SuraList.borderSide,
+//               bottom: SuraList.borderSide,
+//               right: SuraList.borderSide,
+//             )
+//         ),
+//         child: Text('surah name'),
+//       ),
+//       Container(
+//           alignment: Alignment.center,
+//           decoration: BoxDecoration(
+//               border: Border(
+//                 top: SuraList.borderSide,
+//                 bottom: SuraList.borderSide,
+//               )
+//           ),
+//           child: Text('number of verses')
+//       )
+//     ];
+//
+//     String data = await getFileData("assets/sura_names.txt");
+//     List<String> suras = data.split(",");
+//
+//     data = await getFileData("assets/sura_size.txt");
+//     List<String> suraSize = data.split(" ");
+//
+//
+//     suras.map((sura) {
+//       return sura.replaceAll('"', '');
+//     }).toList().asMap().forEach((index, sura) {
+//       suraList.add(
+//           SuraLink(
+//             suraNumber: index + 1,
+//             decoration: BoxDecoration(
+//                 border: Border(
+//                   right: SuraList.borderSide,
+//                 )
+//             ),
+//             text: suraSize[index], suraName: sura,
+//           )
+//       );
+//
+//       suraList.add(
+//           SuraLink(
+//             suraNumber: index + 1,
+//             text: sura, suraName: sura,
+//           )
+//       );
+//     });
+//
+//     return suraList;
+//   }
+//
+//   @override
+//   void initState() {
+//     super.initState();
+//     futureSuraList = buildSuraList();
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return FutureBuilder<List<Widget>>(
+//         future: futureSuraList,
+//         builder: (context, snapshot) {
+//           if (snapshot.hasData){
+//             return Expanded(
+//               flex: 3,
+//               child: Directionality(
+//                 textDirection: TextDirection.ltr,
+//                 child: GridView.count(
+//                   crossAxisCount: 2,
+//                   childAspectRatio: 4/1,
+//                   children: snapshot.data!.toList(),
+//                 ),
+//               ),
+//             );
+//           }
+//           else if (snapshot.hasError){
+//             return Text("${snapshot.error}");
+//           }
+//
+//           return const CircularProgressIndicator();
+//         }
+//     );
+//   }
+// }
