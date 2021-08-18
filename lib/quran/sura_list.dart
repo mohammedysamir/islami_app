@@ -93,10 +93,13 @@ class _SuraListState extends State<SuraList> {
         if (snapshot.hasData){
           return Expanded(
             flex: 3,
-            child: GridView.count(
-              crossAxisCount: 2,
-              childAspectRatio: 4/1,
-              children: snapshot.data!.toList(),
+            child: Directionality(
+              textDirection: TextDirection.ltr,
+              child: GridView.count(
+                crossAxisCount: 2,
+                childAspectRatio: 4/1,
+                children: snapshot.data!.toList(),
+              ),
             ),
           );
         }

@@ -39,7 +39,7 @@ return ChangeNotifierProvider(
   supportedLocales: AppLocalizations.supportedLocales,
   locale: Locale.fromSubtags(languageCode: provider.currentLanguage ),
 
-      themeMode: ThemeMode.dark,
+      themeMode: provider.themeMode,
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.darkTheme,
 

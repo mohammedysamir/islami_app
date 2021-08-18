@@ -10,7 +10,7 @@ class AppConfigProvider extends ChangeNotifier{
     }
   }
 
-  ThemeMode themeMode = ThemeMode.system;
+  ThemeMode themeMode = ThemeMode.light;
 
   void toggleTheme() {
     if (themeMode == ThemeMode.light) {
@@ -18,7 +18,12 @@ class AppConfigProvider extends ChangeNotifier{
     }
     else {
       themeMode = ThemeMode.light;
-    }    notifyListeners();
+    }
+    notifyListeners();
+  }
+
+  void toggleLanguage(){
+
   }
 
 }
