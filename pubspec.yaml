@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^5.0.0
+  shared_preferences: ^2.0.6
 
   flutter_localizations: # Add this line
     sdk: flutter         # Add this line
