@@ -18,11 +18,10 @@ class _SettingsState extends State<Settings> {
   late bool isDark;
   late AppConfigProvider provider;
 
-
   @override
   Widget build(BuildContext context) {
     provider = Provider.of<AppConfigProvider>(context);
-    isDark = provider.themeMode == ThemeMode.dark;
+    isDark = AppConfigProvider.getTheme() == ThemeMode.dark;
     return IslamiScaffold(
       bottomNavBarCurrentIndex: BottomNavBar.settingsIndex,
       child: Container(
@@ -53,7 +52,7 @@ class _SettingsState extends State<Settings> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                           child: Text(
-                            provider.currentLanguage=="en"?"English":"اللغة العربية",
+                            AppConfigProvider.getLanguage()=="en"?"English":"اللغة العربية",
                             style: TextStyle(
                               fontSize: 20,
                             ),
@@ -81,7 +80,7 @@ class _SettingsState extends State<Settings> {
                 ),
                 Expanded(
                   child: Container(
-                    alignment: provider.currentLanguage == "en"
+                    alignment:AppConfigProvider.getLanguage()== "en"
                         ? Alignment.topRight
                         : Alignment.topLeft,
                     child: Padding(
@@ -92,7 +91,6 @@ class _SettingsState extends State<Settings> {
                         onChanged: (val) {
                           setState(() {
                             isDark = val;
-                            print(isDark);
                           });
                           provider.toggleTheme();
                         },
@@ -110,6 +108,8 @@ class _SettingsState extends State<Settings> {
     );
   }
 
+
+  
   void onLanguageChange() {
     showModalBottomSheet(
         context: context,

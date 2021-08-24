@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:islami/Splash.dart';
+import 'package:islami/AppConfig.dart';
 
-void main() => runApp(SplashWidget());
+Future main()async{  WidgetsFlutterBinding.ensureInitialized();await AppConfigProvider.init();runApp(SplashWidget());}
