@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:islami/BottomNavBar.dart';
+import 'package:islami/Radio/RadioWidget.dart';
 import 'package:islami/utility/IslamiScaffold.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class RadioScreen extends StatelessWidget {
   static const String routeName = 'radio';
@@ -25,26 +27,7 @@ class RadioScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          Expanded(
-            flex: 2,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(
-                  Icons.skip_previous,
-                  semanticLabel: 'skip previous',
-                ),
-                Icon(
-                  Icons.play_arrow_rounded,
-                  semanticLabel: 'play',
-                ),
-                Icon(
-                  Icons.skip_next,
-                  semanticLabel: 'skip next',
-                ),
-              ],
-            ),
-          ),
+          RadioWidget(),
         ],
       ),
     );
