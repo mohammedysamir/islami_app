@@ -59,6 +59,9 @@ flutter:
     - assets/ahadeth.txt
     - assets/ahadeth_names.txt
     - assets/Screenshots/
+    - assets/radio_arabic.json
+    - assets/radio_english.json
+    
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

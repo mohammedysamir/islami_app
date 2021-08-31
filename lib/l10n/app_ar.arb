@@ -13,5 +13,6 @@
     "theme" : "الشكل",
     "dark" : "مظلم",
     "light" : "مضئ",
-    "settings":"الاعدادات"
+    "settings":"الاعدادات",
+    "radioFile" : "assets/radio_arabic.json"
 }

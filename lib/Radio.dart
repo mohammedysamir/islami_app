@@ -4,7 +4,6 @@ import 'package:islami/Radio/RadioWidget.dart';
 import 'package:islami/utility/IslamiScaffold.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class RadioScreen extends StatelessWidget {
   static const String routeName = 'radio';
 
@@ -17,9 +16,10 @@ class RadioScreen extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-              flex: 3,
-              child: Image.asset('assets/images/radio_image.png',
-                  fit: BoxFit.fill)),
+            flex: 3,
+            child:
+                Image.asset('assets/images/radio_image.png', fit: BoxFit.fill),
+          ),
           Expanded(
             child: Text(
               AppLocalizations.of(context)!.quranchannel,

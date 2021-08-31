@@ -13,6 +13,7 @@
     "theme" : "Theme",
     "dark": "Dark",
     "light" : "Light",
-    "settings":"settings"
+    "settings":"settings",
+    "radioFile" : "assets/radio_arabic.json"
 
 }
