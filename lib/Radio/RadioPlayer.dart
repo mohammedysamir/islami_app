@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:islami/AppConfig.dart';
 import 'package:just_audio/just_audio.dart';
 
 class RadioList {
@@ -33,7 +34,10 @@ class RadioList {
 
   int get length => _list.length;
 
-  String get(int idx, String parameter) => _list[idx][parameter];
+  String get(int idx, String parameter) {
+    switchList(AppConfigProvider.getLanguage() == 'en');
+    return _list[idx][parameter];
+  }
 }
 
 class RadioPlayer {
@@ -47,23 +51,25 @@ class RadioPlayer {
   }
 
   Future<void> pause() async {
-    await _audioPlayer.pause();
     isPlaying = false;
+    await _audioPlayer.pause();
   }
 
   Future<void> play() async {
+    isPlaying = true;
     await _audioPlayer.setUrl(_radioList.get(_currentIdx, 'radio_url'));
     await _audioPlayer.play();
-    isPlaying = true;
   }
 
   void prev() {
     _currentIdx = (_currentIdx - 1) % _radioList.length;
+    print(isPlaying);
     if (isPlaying) play();
   }
 
   void forward() {
     _currentIdx = (_currentIdx + 1) % _radioList.length;
+    print(isPlaying);
     if (isPlaying) play();
   }
 

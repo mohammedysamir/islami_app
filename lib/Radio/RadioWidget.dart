@@ -13,11 +13,9 @@ class _RadioState extends State<RadioWidget> {
   bool _currentState = false;
   IconData _currentIcon = Icons.play_arrow_rounded;
   String _currentChannel = "-";
-  late AppConfigProvider provider;
 
   @override
   Widget build(BuildContext context) {
-    provider = Provider.of<AppConfigProvider>(context);
     widget._radioPlayer.setFile(AppConfigProvider.getLanguage() == 'en');
     return Expanded(
       flex: 2,
@@ -65,10 +63,11 @@ class _RadioState extends State<RadioWidget> {
     );
   }
 
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.detached) {
+  @override
+  @mustCallSuper
+  void dispose() {
       widget._radioPlayer.dispose();
-    }
+      super.dispose();
   }
 
   void playOrPause() {
