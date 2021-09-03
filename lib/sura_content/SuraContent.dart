@@ -33,6 +33,10 @@ class _SuraContentState extends State<SuraContent> {
     return data;
   }
 
+  bool addBesmAllah(){
+    return (widget.args.suraName != "الفاتحه" && widget.args.suraName!="التوبة");
+  }
+
   @override
   void initState() {
     super.initState();
@@ -84,7 +88,8 @@ class _SuraContentState extends State<SuraContent> {
                     Container(
                         alignment: Alignment.center,
                         padding: EdgeInsets.only(top: 5.0),
-                        child: Text("بسم الله الرحمن الرحيم", style: Theme.of(context).textTheme.bodyText1)
+                        child:
+                        Text(addBesmAllah()?"بسم الله الرحمن الرحيم":"", style: Theme.of(context).textTheme.bodyText1)
                     ),
                     FutureBuilder<String>(
                         future: futureSuraContent,

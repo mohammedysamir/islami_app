@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami/Hadeth/HadethLink.dart';
 import 'package:islami/utility/get_file_data.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class HadethList extends StatefulWidget {
   const HadethList({Key? key}) : super(key: key);
@@ -17,17 +19,59 @@ class HadethList extends StatefulWidget {
 class _HadethListState extends State<HadethList> {
   late Future<List<Widget>> futureHadethList;
 
+  @override
+  void initState() {
+    super.initState();
+    futureHadethList =  this.buildHadethList();
+
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Expanded(
+      flex: 2,
+      child: Column(
+        children: [
+          Expanded(
+            child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    border: Border(
+                      top: HadethList.borderSide,
+                      bottom: HadethList.borderSide,
+                    )),
+                child:
+                // Text("الأحاديث", style:TextStyle(fontSize: 25.0))
+              Text(AppLocalizations.of(context)!.alahadis, style:Theme.of(context).textTheme.bodyText1)
+            ),
+          ),
+          FutureBuilder<List<Widget>>(
+              future: futureHadethList,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Expanded(
+                    flex: 3,
+                    child: GridView.count(
+                      crossAxisCount: 1,
+                      childAspectRatio: 6 / 1,
+                      children: snapshot.data!.toList(),
+                    ),
+                  );
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+
+                return const CircularProgressIndicator();
+              }),
+        ],
+      ),
+    );
+  }
+
   Future<List<Widget>> buildHadethList() async {
     final List<Widget> hadethList = [
-      Container(
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              border: Border(
-            top: HadethList.borderSide,
-            bottom: HadethList.borderSide,
-          )),
-          child: Text("الاحاديث", style:TextStyle(fontSize: 25.0))
-      )
+
     ];
 
     String data = await getFileData("assets/ahadeth_names.txt");
@@ -41,31 +85,5 @@ class _HadethListState extends State<HadethList> {
     return hadethList;
   }
 
-  @override
-  void initState() {
-    super.initState();
-    futureHadethList = buildHadethList();
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<List<Widget>>(
-        future: futureHadethList,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return Expanded(
-              flex: 2,
-              child: GridView.count(
-                crossAxisCount: 1,
-                childAspectRatio: 6 / 1,
-                children: snapshot.data!.toList(),
-              ),
-            );
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
-
-          return const CircularProgressIndicator();
-        });
-  }
 }

@@ -1,6 +1,6 @@
 {
     "language": "Language",
-    "numberofversus": "Number Of Versus",
+    "numberofversus": "Number of Verses",
     "surahname" : "Surah Name",
     "alquran" : "Quran",
     "alahadis" : "El Ahadis",
@@ -10,7 +10,7 @@
     "numberoftasbeh" : "The Number Of Praises",
     "eslami" : "Islami",
     "settings" : "Settings",
-    "theme" : "Theme",
+    "theme" : "Dark Theme",
     "dark": "Dark",
     "light" : "Light",
     "settings":"settings",

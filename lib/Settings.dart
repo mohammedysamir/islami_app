@@ -52,7 +52,7 @@ class _SettingsState extends State<Settings> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                           child: Text(
-                            AppConfigProvider.getLanguage()=="en"?"English":"اللغة العربية",
+                            AppConfigProvider.getLanguage()=="en"?"English":"العربية",
                             style: TextStyle(
                               fontSize: 20,
                             ),
@@ -128,7 +128,7 @@ class _SettingsState extends State<Settings> {
                     padding: const EdgeInsets.all(10.0),
                     child: InkWell(
                       child: Text(
-                        ' اللغة العربية',
+                        'العربية',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.normal),
                         textAlign: TextAlign.center,
@@ -144,7 +144,7 @@ class _SettingsState extends State<Settings> {
                     padding: const EdgeInsets.all(10.0),
                     child: InkWell(
                       child: Text(
-                        'English language',
+                        'English',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.normal),
                         textAlign: TextAlign.center,
